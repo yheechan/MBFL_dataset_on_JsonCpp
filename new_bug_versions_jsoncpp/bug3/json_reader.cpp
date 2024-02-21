@@ -1276,7 +1276,7 @@ void OurReader::skipBom(bool allowBom) {
   // If BOM is not allowed, then skip it.
   // The default value is: false
   if (!allowBom) {
-    if ((end_ - begin_) >= 3 && strncmp(begin_, "\xEF\xBB\xBF", 3) == 0) {
+    if (end_ - begin_ <= 3) { Token token; addError("BOM expected", token); return; } if (strncmp(begin_, "\xEF\xBB\xBF", 3) == 0) {
       begin_ += 3;
       current_ = begin_;
     }
@@ -1625,7 +1625,8 @@ bool OurReader::decodeNumber(Token& token, Value& decoded) {
 
   if (isNegative) {
     // We use the same magnitude assumption here, just in case.
-    decoded = -Value::LargestInt(value);
+    const auto last_digit = static_cast<Value::UInt>(value % 10);
+    decoded = -Value::LargestInt(value / 10) * 10 - last_digit;
   } else if (value <= Value::LargestUInt(Value::maxLargestInt)) {
     decoded = Value::LargestInt(value);
   } else {

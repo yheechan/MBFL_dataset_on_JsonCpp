@@ -11,7 +11,7 @@ main_dir = my_tool_dir.parent
 past_data_dir = main_dir / 'past_data'
 
 
-def get_buggy_line(spectrum_dir, bug):
+def get_buggy_line_csv(spectrum_dir, bug):
     file_name = '{}.csv'.format(bug)
     spectrum_file = spectrum_dir / file_name
 
@@ -24,8 +24,47 @@ def get_buggy_line(spectrum_dir, bug):
     if len(buggy_line) != 1:
         print('Error: {} has more than one buggy line'.format(bug))
         return None
+    key = buggy_line['lineNo'].values[0]
+    info = key.split('#')
+    value = '{}#{}#{}'.format(info[0], info[1], info[3])
+    return value
+
+def get_buggy_line_db(bug):
+    db_dict = {
+        'json_reader': main_dir / 'past_data/mutant_db/json_reader_mut_db.csv',
+        'json_value': main_dir / 'past_data/mutant_db/json_value_mut_db.csv'
+    }
+
+    info = bug.split('.')[0]
+    mutant_db = db_dict[info]
+
+    mutant_fp = open(mutant_db, 'r')
+    mutant_lines = mutant_fp.readlines()
+
+    cnt = 0
+    for line in mutant_lines:
+        if cnt < 2:
+            cnt += 1
+            continue
+
+        data = line.split(',')
+        # print(line)
+        mutant_id = data[0]
+        operator = data[1]
+        og_start_line = int(data[2])
+        og_end_line = int(data[4])
+        og_token = data[6]
+        mut_start_line = int(data[7])
+        mut_end_line = int(data[9])
+        mut_token = data[11]
+        assert og_start_line == mut_start_line
+        assert mut_start_line == mut_end_line
+
+        if mutant_id == bug:
+            buggy_line = '{}#src/lib_json/{}.cpp#{}'.format(bug, info, mut_start_line)
+            return buggy_line
     
-    return buggy_line['lineNo'].values[0]
+
 
 
 def map_bug2id():
@@ -71,14 +110,23 @@ def map_bug2id():
 
         bug_id = 'bug{}'.format(bug_cnt)
 
+        real_bug = False
         json_file = None
         if 'bug' in bug:
             json_file = for_4bugs[bug][0]
+            real_bug = True
         else:
             name_info = bug.split('.')
             json_file = '.'.join([name_info[0], name_info[2]])
         
-        buggy_line = get_buggy_line(spectrum_dir, bug)
+
+        buggy_line = get_buggy_line_csv(spectrum_dir, bug)
+        if not buggy_line:
+            buggy_line_from_db = get_buggy_line_db(bug)
+            lineNo_from_db = buggy_line_from_db.split('#')[2]
+            lineNo_from_csv = buggy_line.split('#')[2]
+
+            assert int(lineNo_from_db) == int(lineNo_from_csv)
         
         bug2id_fp.write('{},{},{},\"{}\"\n'.format(bug_id, bug, json_file, buggy_line))
 
