@@ -4,3 +4,4 @@ bin_run_on_machine/
 core0/
 extractor/extractor
 bin_on_machine/extractor/
+data_per_bug/

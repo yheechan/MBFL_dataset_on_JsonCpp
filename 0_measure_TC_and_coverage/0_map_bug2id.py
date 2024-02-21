@@ -25,9 +25,7 @@ def get_buggy_line_csv(spectrum_dir, bug):
         print('Error: {} has more than one buggy line'.format(bug))
         return None
     key = buggy_line['lineNo'].values[0]
-    info = key.split('#')
-    value = '{}#{}#{}'.format(info[0], info[1], info[3])
-    return value
+    return key
 
 def get_buggy_line_db(bug):
     db_dict = {

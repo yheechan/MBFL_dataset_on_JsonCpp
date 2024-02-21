@@ -8,7 +8,6 @@ import pandas as pd
 script_path = Path(os.path.realpath(__file__))
 my_tool_dir = script_path.parent
 main_dir = my_tool_dir.parent
-past_data_dir = main_dir / 'past_data'
 
 def get_available_machines():
     machine_txt = Path('/home/yangheechan/machines.txt')
@@ -41,6 +40,7 @@ def get_assigned_machines(machine_list):
             print('Error: {} does not exist'.format(versions))
             exit(1)
 
+        # format: file_path, version_name
         bug_versions_list.append([file_path, version_name])
     
     print('bug_versions_list: ', len(bug_versions_list))
@@ -58,7 +58,7 @@ def get_assigned_machines(machine_list):
                 break
             
             # ONE FOR SINGLE CORE!!!
-            assigned_machines[machine][i] = bug_versions_list[bug_version_cnt][0]
+            assigned_machines[machine][i] = bug_versions_list[bug_version_cnt]
             
             machinecore2bug_fp.write('{},core{},{}\n'.format(machine, i, bug_versions_list[bug_version_cnt][1]))
             bug_version_cnt += 1
@@ -84,11 +84,15 @@ def sent_mutants(bash_name):
             print('\tcore{}: '.format(core_num))
 
             # for file in assigned_machines[assigned_machines][core].iterdir():
-            file = assigned_machines[machine][core_num]
+            file = assigned_machines[machine][core_num][0]
+            version_name = assigned_machines[machine][core_num][1]
             file_name = file.name
             print('\t\t{}'.format(file))
             bash_file.write('scp {} {}:/home/yangheechan/mbfl/core{}/jsoncpp_template/src/lib_json/{} & \n'.format(
                 file, machine, core_num, file_name
+            ))
+            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/mbfl/core{}/data && echo {}-core{}-{} > /home/yangheechan/mbfl/core{}/data/bug_version.txt\" & \n'.format(
+                machine, core_num, machine, core_num, version_name, core_num
             ))
             cnt += 1
             if cnt%5 == 0:

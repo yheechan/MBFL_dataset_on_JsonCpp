@@ -8,7 +8,6 @@ import pandas as pd
 script_path = Path(os.path.realpath(__file__))
 my_tool_dir = script_path.parent
 main_dir = my_tool_dir.parent
-past_data_dir = main_dir / 'past_data'
 
 def make_clone(template_name):
     cmd = [
