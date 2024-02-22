@@ -164,7 +164,7 @@ def write_version_summary(core_dir, coverage_summary):
     version_summary_dir = data_dir / 'version_summary.csv'
     version_summary_fp = open(version_summary_dir, 'w')
     version_summary_fp.write('# of failing_tc,# of passing_tc,# of total_tc,# of lines executed by failing TC,# of lines executed by passing tc,total # of lines executed,total # of lines, total coverage\n')
-    version_summary_fp.write('{},{},{},{},{},{},{},{}\n'.format(
+    version_summary_fp.write('{},{},{},{},{},{},{},{:.2f}\n'.format(
         coverage_summary['failing_tc'],
         coverage_summary['passing_tc'],
         coverage_summary['total_tc'],
@@ -172,7 +172,7 @@ def write_version_summary(core_dir, coverage_summary):
         coverage_summary['lines_executed_by_passing_tc'],
         coverage_summary['total_lines_executed'],
         coverage_summary['total_lines'],
-        coverage_summary['total_lines_executed']/coverage_summary['total_lines']
+        (coverage_summary['total_lines_executed']/coverage_summary['total_lines'])*100
     ))
     
 
