@@ -79,9 +79,9 @@ if __name__ == "__main__":
 
     start_time = time.time()
 
-    # build_jsoncpp_exec(core_id)
-    # extract_line2function_exec(core_id)
-    # run_testcases_exec(core_id)
+    build_jsoncpp_exec(core_id)
+    extract_line2function_exec(core_id)
+    run_testcases_exec(core_id)
     postprocess_cov_exec(core_id)
 
     end_time = time.time()
