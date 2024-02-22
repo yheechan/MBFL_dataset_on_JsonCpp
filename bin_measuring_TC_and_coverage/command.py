@@ -22,8 +22,8 @@ send_bin_py = bin_dir / '6_send_bin.py'
 send_bin_sh = bin_dir / '6_send_bin.sh'
 run_command_py = bin_dir / '7_run_command.py'
 run_command_sh = bin_dir / '7_run_command.sh'
-retreive_data_py = bin_dir / '8_retrieve_data.py'
-retreive_data_sh = bin_dir / '8_retrieve_data.sh'
+retreive_data_py = bin_dir / '8_retreive_data.py'
+retreive_data_sh = bin_dir / '8_retreive_data.sh'
 
 def map_bug2id_exec():
     # 0. map bug2id
