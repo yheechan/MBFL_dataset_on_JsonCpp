@@ -1142,13 +1142,13 @@ bool Value::insert(ArrayIndex index, Value&& newValue) {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == arrayValue,
                       "in Json::Value::insert: requires arrayValue");
   ArrayIndex length = size();
-  if ((--index) > length) {
+  if (index > length) {
     return false;
   }
   for (ArrayIndex i = length; i > index; i--) {
     (*this)[i] = std::move((*this)[i - 1]);
   }
-  (*this)[index] = std::move(newValue);
+  (*this)[(--index)] = std::move(newValue);
   return true;
 }
 

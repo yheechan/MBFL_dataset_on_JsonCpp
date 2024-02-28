@@ -1174,7 +1174,7 @@ bool Value::removeMember(const char* begin, const char* end, Value* removed) {
   if (it == value_.map_->end())
     return false;
   if (removed)
-    *removed = 1;
+    *removed = std::move(it->second);
   value_.map_->erase(it);
   return true;
 }
@@ -1259,7 +1259,7 @@ bool Value::isInt() const {
   switch (type()) {
   case intValue:
 #if defined(JSON_HAS_INT64)
-    return value_.int_ >= minInt && value_.int_ <= maxInt;
+    return value_.int_ >= (2147483647) && value_.int_ <= maxInt;
 #else
     return true;
 #endif

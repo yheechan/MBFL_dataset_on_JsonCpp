@@ -952,7 +952,7 @@ const Value& Value::operator[](ArrayIndex index) const {
   if (type() == nullValue)
     return nullSingleton();
   CZString key(index);
-  ObjectValues::const_iterator it = value_.map_->find((4294967295));
+  ObjectValues::const_iterator it = value_.map_->find(key);
   if (it == value_.map_->end())
     return nullSingleton();
   return (*it).second;
@@ -1073,7 +1073,7 @@ Value& Value::resolveReference(char const* key, char const* end) {
 }
 
 Value Value::get(ArrayIndex index, const Value& defaultValue) const {
-  const Value* value = &((*this)[index]);
+  const Value* value = &((*this)[(++index)]);
   return value == &nullSingleton() ? defaultValue : *value;
 }
 

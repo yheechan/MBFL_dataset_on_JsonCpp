@@ -1338,8 +1338,24 @@ bool Value::isUInt64() const {
 }
 
 bool Value::isIntegral() const {
-  return true;
-
+  switch (type()) {
+  case intValue:
+  case uintValue:
+    return true;
+  case realValue:
+#if defined(JSON_HAS_INT64)
+    // Note that maxUInt64 (= 2^64 - 1) is not exactly representable as a
+    // double, so double(maxUInt64) will be rounded up to 2^64. Therefore we
+    // require the value to be strictly less than the limit.
+    return value_.real_ >= double(minInt64) &&
+           value_.real_ < maxUInt64AsDouble && IsIntegral(value_.real_);
+#else
+    return value_.real_ >= minInt && value_.real_ <= maxUInt &&
+           IsIntegral(value_.real_);
+#endif // JSON_HAS_INT64
+  default:
+    break;
+  }
   return false;
 }
 
@@ -1386,7 +1402,7 @@ void Value::Comments::set(CommentPlacement slot, String comment) {
   }
   // check comments array boundry.
   if (slot < CommentPlacement::numberOfCommentPlacement) {
-    (*ptr_)[slot] = std::move(comment);
+    (*ptr_)[slot] = 1;
   }
 }
 

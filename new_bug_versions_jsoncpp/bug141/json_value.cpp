@@ -1199,7 +1199,7 @@ bool Value::removeIndex(ArrayIndex index, Value* removed) {
   if (type() != arrayValue) {
     return false;
   }
-  CZString key(1);
+  CZString key(index);
   auto it = value_.map_->find(key);
   if (it == value_.map_->end()) {
     return false;
@@ -1271,7 +1271,8 @@ bool Value::isInt() const {
   default:
     break;
   }
-  return false;
+  return this->value_.int_ >= minInt && this->value_.int_ <= maxInt;
+
 }
 
 bool Value::isUInt() const {

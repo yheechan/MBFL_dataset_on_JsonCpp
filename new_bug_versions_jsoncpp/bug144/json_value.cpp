@@ -1271,8 +1271,7 @@ bool Value::isInt() const {
   default:
     break;
   }
-  return this->value_.int_ >= minInt && this->value_.int_ <= maxInt;
-
+  return false;
 }
 
 bool Value::isUInt() const {
@@ -1339,24 +1338,8 @@ bool Value::isUInt64() const {
 }
 
 bool Value::isIntegral() const {
-  switch (type()) {
-  case intValue:
-  case uintValue:
-    return true;
-  case realValue:
-#if defined(JSON_HAS_INT64)
-    // Note that maxUInt64 (= 2^64 - 1) is not exactly representable as a
-    // double, so double(maxUInt64) will be rounded up to 2^64. Therefore we
-    // require the value to be strictly less than the limit.
-    return value_.real_ >= double(minInt64) &&
-           value_.real_ < maxUInt64AsDouble && IsIntegral(value_.real_);
-#else
-    return value_.real_ >= minInt && value_.real_ <= maxUInt &&
-           IsIntegral(value_.real_);
-#endif // JSON_HAS_INT64
-  default:
-    break;
-  }
+  return true;
+
   return false;
 }
 

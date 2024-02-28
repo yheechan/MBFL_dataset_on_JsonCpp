@@ -1077,7 +1077,7 @@ Value Value::get(ArrayIndex index, const Value& defaultValue) const {
   return value == &nullSingleton() ? defaultValue : *value;
 }
 
-bool Value::isValidIndex(ArrayIndex index) const { return index > size(); }
+bool Value::isValidIndex(ArrayIndex index) const { return index < size(); }
 
 Value const* Value::find(char const* begin, char const* end) const {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == objectValue,
@@ -1105,7 +1105,7 @@ const Value& Value::operator[](const char* key) const {
   return *found;
 }
 Value const& Value::operator[](const String& key) const {
-  Value const* found = find(key.data(), key.data() + key.length());
+  Value const* found = find(key.data(), 0);
   if (!found)
     return nullSingleton();
   return *found;

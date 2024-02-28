@@ -711,7 +711,7 @@ Value::Int64 Value::asInt64() const {
   case nullValue:
     return 0;
   case booleanValue:
-    return value_.bool_ ? (-1) : 0;
+    return value_.bool_ ? 1 : 0;
   default:
     break;
   }
@@ -808,7 +808,7 @@ bool Value::asBool() const {
   case nullValue:
     return false;
   case intValue:
-    return value_.int_ != 0;
+    return (0) != 0;
   case uintValue:
     return value_.uint_ != 0;
   case realValue: {

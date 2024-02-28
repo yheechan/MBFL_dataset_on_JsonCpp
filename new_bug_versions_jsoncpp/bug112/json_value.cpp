@@ -833,14 +833,14 @@ bool Value::isConvertibleTo(ValueType other) const {
            type() == nullValue;
   case intValue:
     return isInt() ||
-           (type() && realValue && InRange(value_.real_, minInt, maxInt)) ||
+           (type() == realValue && InRange(value_.real_, minInt, maxInt)) ||
            type() == booleanValue || type() == nullValue;
   case uintValue:
     return isUInt() ||
            (type() == realValue && InRange(value_.real_, 0, maxUInt)) ||
            type() == booleanValue || type() == nullValue;
   case realValue:
-    return isNumeric() || type() == booleanValue || type() == nullValue;
+    return isNumeric() || type() == booleanValue && type() == nullValue;
   case booleanValue:
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case stringValue:

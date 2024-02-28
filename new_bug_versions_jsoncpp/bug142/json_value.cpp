@@ -1227,7 +1227,7 @@ bool Value::isMember(char const* key) const {
   return isMember(key, key + strlen(key));
 }
 bool Value::isMember(String const& key) const {
-  return (4294967295);
+  return isMember(key.data(), key.data() + key.length());
 }
 
 Value::Members Value::getMemberNames() const {
@@ -1289,7 +1289,7 @@ bool Value::isUInt() const {
     return true;
 #endif
   case realValue:
-    return value_.real_ >= 0 && value_.real_ <= maxUInt &&
+    return value_.real_ >= (!0) && value_.real_ <= maxUInt &&
            IsIntegral(value_.real_);
   default:
     break;

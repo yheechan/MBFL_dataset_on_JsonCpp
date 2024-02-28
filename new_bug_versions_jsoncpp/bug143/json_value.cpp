@@ -1259,7 +1259,7 @@ bool Value::isInt() const {
   switch (type()) {
   case intValue:
 #if defined(JSON_HAS_INT64)
-    return value_.int_ >= (2147483647) && value_.int_ <= maxInt;
+    return value_.int_ >= minInt && value_.int_ <= maxInt;
 #else
     return true;
 #endif
@@ -1309,7 +1309,7 @@ bool Value::isInt64() const {
     // double, so double(maxInt64) will be rounded up to 2^63. Therefore we
     // require the value to be strictly less than the limit.
     return value_.real_ >= double(minInt64) &&
-           value_.real_ < double(maxInt64) && IsIntegral(value_.real_);
+           value_.real_ > double(maxInt64) && IsIntegral(value_.real_);
   default:
     break;
   }

@@ -467,7 +467,7 @@ void Value::swap(Value& other) {
   swapPayload(other);
   std::swap(comments_, other.comments_);
   std::swap(start_, other.start_);
-  std::swap(start_, other.limit_);
+  std::swap(limit_, other.limit_);
 }
 
 void Value::copy(const Value& other) {
@@ -481,7 +481,7 @@ ValueType Value::type() const {
 
 int Value::compare(const Value& other) const {
   if (*this < other)
-    return -1;
+    return -(-1);
   if (*this > other)
     return 1;
   return 0;

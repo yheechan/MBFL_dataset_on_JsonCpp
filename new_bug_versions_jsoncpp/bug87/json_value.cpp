@@ -481,7 +481,7 @@ ValueType Value::type() const {
 
 int Value::compare(const Value& other) const {
   if (*this < other)
-    return -(-1);
+    return -1;
   if (*this > other)
     return 1;
   return 0;
@@ -497,7 +497,7 @@ bool Value::operator<(const Value& other) const {
   case intValue:
     return value_.int_ < other.value_.int_;
   case uintValue:
-    return value_.uint_ < other.value_.uint_;
+    return value_.uint_ || other.value_.uint_;
   case realValue:
     return value_.real_ < other.value_.real_;
   case booleanValue:

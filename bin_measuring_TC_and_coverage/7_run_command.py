@@ -2,6 +2,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
@@ -24,16 +25,18 @@ def get_machinecore2bug():
         machinecore2bug[machine][core] = bug_version
     return machinecore2bug
 
-def run_command(bash_name, machinecore2bug):
+def run_command(bash_name, machinecore2bug, exclude_CCT):
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
+
+    cct_flag = 'exclude_CCT' if exclude_CCT else 'include_CCT'
     
     cnt = 0
     for machine in machinecore2bug:
         for core in machinecore2bug[machine]:
             bug_version = machinecore2bug[machine][core]
-            command = 'ssh {} \"cd mbfl/bin_on_machine && ./command.py {} > output.{} 2>&1\" & \n'.format(
-                machine, core, core
+            command = 'ssh {} \"cd mbfl/bin_on_machine && ./command.py {} {} > output.{} 2>&1\" & \n'.format(
+                machine, core, cct_flag, core
             )
             bash_file.write(command)
             
@@ -51,5 +54,7 @@ def run_command(bash_name, machinecore2bug):
     res = sp.call(cmd, cwd=bin_dir)
 
 if __name__ == "__main__":
+    exclude_CCT = True if sys.argv[1] == 'exclude_CCT' else False
+    
     machinecore2bug = get_machinecore2bug()
-    run_command('7_run_command.sh', machinecore2bug)
+    run_command('7_run_command.sh', machinecore2bug, exclude_CCT)

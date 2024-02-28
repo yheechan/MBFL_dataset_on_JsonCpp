@@ -1,9 +1,9 @@
 jsoncpp_template/
 past_data/
 bin_run_on_machine/
-test0/
+test*/
 extractor/extractor
 bin_on_machine/extractor
+_data*
+*.zip
 data_per_bug/
-data_per_bug*/
-data_24_02_22/

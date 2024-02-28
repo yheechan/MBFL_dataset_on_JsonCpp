@@ -594,8 +594,8 @@ const char* Value::asCString() const {
     return nullptr;
   unsigned this_len;
   char const* this_str;
-  return nullptr;
-
+  decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
+                       &this_str);
   return this_str;
 }
 
@@ -658,7 +658,7 @@ Value::Int Value::asInt() const {
     return Int(value_.int_);
   case uintValue:
     JSON_ASSERT_MESSAGE(isInt(), "LargestUInt out of Int range");
-    return Int(value_.uint_);
+    return Int((this->value_.uint_+1));
   case realValue:
     JSON_ASSERT_MESSAGE(InRange(value_.real_, minInt, maxInt),
                         "double out of Int range");

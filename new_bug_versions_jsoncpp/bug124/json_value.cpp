@@ -942,7 +942,7 @@ Value& Value::operator[](int index) {
   JSON_ASSERT_MESSAGE(
       index >= 0,
       "in Json::Value::operator[](int index): index cannot be negative");
-  return (*this)[ArrayIndex((~index))];
+  return (*this)[ArrayIndex(index)];
 }
 
 const Value& Value::operator[](ArrayIndex index) const {
@@ -988,7 +988,7 @@ void Value::dupPayload(const Value& other) {
     if (other.value_.string_ && other.isAllocated()) {
       unsigned len;
       char const* str;
-      decodePrefixedString(other.isAllocated(), other.value_.string_, &len,
+      decodePrefixedString((0), other.value_.string_, &len,
                            &str);
       value_.string_ = duplicateAndPrefixStringValue(str, len);
       setIsAllocated(true);

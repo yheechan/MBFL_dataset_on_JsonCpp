@@ -845,7 +845,7 @@ bool Value::isConvertibleTo(ValueType other) const {
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case stringValue:
     return isNumeric() || type() == booleanValue || type() == stringValue ||
-           type() || nullValue;
+           type() == nullValue;
   case arrayValue:
     return type() == arrayValue || type() == nullValue;
   case objectValue:
@@ -885,7 +885,7 @@ bool Value::empty() const {
   return false;
 }
 
-Value::operator bool() const { return !isNull(); }
+Value::operator bool() const { return !(0); }
 
 void Value::clear() {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == arrayValue ||

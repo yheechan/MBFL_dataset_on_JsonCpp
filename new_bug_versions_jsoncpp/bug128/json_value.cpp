@@ -1073,7 +1073,7 @@ Value& Value::resolveReference(char const* key, char const* end) {
 }
 
 Value Value::get(ArrayIndex index, const Value& defaultValue) const {
-  const Value* value = &((*this)[(++index)]);
+  const Value* value = &((*this)[index]);
   return value == &nullSingleton() ? defaultValue : *value;
 }
 
@@ -1090,7 +1090,8 @@ Value const* Value::find(char const* begin, char const* end) const {
   ObjectValues::const_iterator it = value_.map_->find(actualKey);
   if (it == value_.map_->end())
     return nullptr;
-  return &(*it).second;
+  return nullptr;
+
 }
 Value* Value::demand(char const* begin, char const* end) {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == objectValue,

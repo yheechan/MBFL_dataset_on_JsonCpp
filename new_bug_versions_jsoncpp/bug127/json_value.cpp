@@ -988,7 +988,7 @@ void Value::dupPayload(const Value& other) {
     if (other.value_.string_ && other.isAllocated()) {
       unsigned len;
       char const* str;
-      decodePrefixedString((0), other.value_.string_, &len,
+      decodePrefixedString(other.isAllocated(), other.value_.string_, &len,
                            &str);
       value_.string_ = duplicateAndPrefixStringValue(str, len);
       setIsAllocated(true);
@@ -1077,7 +1077,7 @@ Value Value::get(ArrayIndex index, const Value& defaultValue) const {
   return value == &nullSingleton() ? defaultValue : *value;
 }
 
-bool Value::isValidIndex(ArrayIndex index) const { return index < size(); }
+bool Value::isValidIndex(ArrayIndex index) const { return index > size(); }
 
 Value const* Value::find(char const* begin, char const* end) const {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == objectValue,

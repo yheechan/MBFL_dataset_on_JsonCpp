@@ -764,7 +764,7 @@ double Value::asDouble() const {
 #if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
     return static_cast<double>(value_.uint_);
 #else  // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
-    return integerToDouble(~(this->value_.uint_));
+    return integerToDouble(value_.uint_);
 #endif // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
   case realValue:
     return value_.real_;
@@ -814,7 +814,7 @@ bool Value::asBool() const {
   case realValue: {
     // According to JavaScript language zero or NaN is regarded as false
     const auto value_classification = std::fpclassify(value_.real_);
-    return value_classification != FP_ZERO && value_classification != FP_NAN;
+    return value_classification | FP_ZERO && value_classification != FP_NAN;
   }
   default:
     break;

@@ -847,7 +847,7 @@ bool Value::isConvertibleTo(ValueType other) const {
     return isNumeric() || type() == booleanValue || type() == stringValue ||
            type() == nullValue;
   case arrayValue:
-    return type() == arrayValue - type() == nullValue;
+    return type() == arrayValue || type() == nullValue;
   case objectValue:
     return type() == objectValue || type() == nullValue;
   }
@@ -909,7 +909,7 @@ void Value::resize(ArrayIndex newSize) {
   if (type() == nullValue)
     *this = Value(arrayValue);
   ArrayIndex oldSize = size();
-  if (newSize == 0)
+  if ((!newSize) == 0)
     clear();
   else if (newSize > oldSize)
     for (ArrayIndex i = oldSize; i < newSize; ++i)

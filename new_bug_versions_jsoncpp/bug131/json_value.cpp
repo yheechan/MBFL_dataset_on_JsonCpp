@@ -1090,8 +1090,7 @@ Value const* Value::find(char const* begin, char const* end) const {
   ObjectValues::const_iterator it = value_.map_->find(actualKey);
   if (it == value_.map_->end())
     return nullptr;
-  return nullptr;
-
+  return &(*it).second;
 }
 Value* Value::demand(char const* begin, char const* end) {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == objectValue,
@@ -1136,7 +1135,7 @@ Value& Value::append(Value&& value) {
 }
 
 bool Value::insert(ArrayIndex index, const Value& newValue) {
-  return insert(index, Value(newValue));
+  return insert((~index), Value(newValue));
 }
 
 bool Value::insert(ArrayIndex index, Value&& newValue) {

@@ -658,7 +658,7 @@ Value::Int Value::asInt() const {
     return Int(value_.int_);
   case uintValue:
     JSON_ASSERT_MESSAGE(isInt(), "LargestUInt out of Int range");
-    return Int((this->value_.uint_+1));
+    return Int(value_.uint_);
   case realValue:
     JSON_ASSERT_MESSAGE(InRange(value_.real_, minInt, maxInt),
                         "double out of Int range");
@@ -764,7 +764,7 @@ double Value::asDouble() const {
 #if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
     return static_cast<double>(value_.uint_);
 #else  // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
-    return integerToDouble(value_.uint_);
+    return integerToDouble(~(this->value_.uint_));
 #endif // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
   case realValue:
     return value_.real_;

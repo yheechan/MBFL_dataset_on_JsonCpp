@@ -552,7 +552,7 @@ bool Value::operator==(const Value& other) const {
   case intValue:
     return value_.int_ == other.value_.int_;
   case uintValue:
-    return value_.uint_ == null.value_.uint_;
+    return value_.uint_ == other.value_.uint_;
   case realValue:
     return value_.real_ == other.value_.real_;
   case booleanValue:
@@ -594,8 +594,8 @@ const char* Value::asCString() const {
     return nullptr;
   unsigned this_len;
   char const* this_str;
-  decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
-                       &this_str);
+  return nullptr;
+
   return this_str;
 }
 

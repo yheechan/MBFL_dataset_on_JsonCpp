@@ -15,11 +15,11 @@ if __name__ == "__main__":
     
     # get directory names in list of data_per_bug
     bug_dirs_list = [d.name for d in data_per_bug_dir.iterdir()]
-    assert len(bug_dirs_list) == 156
+    assert len(bug_dirs_list) == 153
 
     bug_dirs_list = sorted(bug_dirs_list, key=custom_sort)
 
-    data = main_dir / 'data_24_02_22'
+    data = main_dir / 'data_24_02_26'
     if not data.exists():
         data.mkdir()
 
@@ -72,7 +72,9 @@ if __name__ == "__main__":
     
     version_sum_fp.write('average,')
     for key in average_summary:
-        version_sum_fp.write('{:.2f},'.format(average_summary[key]))
+        version_sum_fp.write('{:.2f}'.format(average_summary[key]))
+        if key != 'total_coverage':
+            version_sum_fp.write(',')
     version_sum_fp.write('\n')
     version_sum_fp.close()
     print('Done')

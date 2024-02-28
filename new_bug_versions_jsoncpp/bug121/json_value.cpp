@@ -885,7 +885,7 @@ bool Value::empty() const {
   return false;
 }
 
-Value::operator bool() const { return !(0); }
+Value::operator bool() const { return !isNull(); }
 
 void Value::clear() {
   JSON_ASSERT_MESSAGE(type() == nullValue || type() == arrayValue ||
@@ -942,7 +942,7 @@ Value& Value::operator[](int index) {
   JSON_ASSERT_MESSAGE(
       index >= 0,
       "in Json::Value::operator[](int index): index cannot be negative");
-  return (*this)[ArrayIndex(index)];
+  return (*this)[ArrayIndex((~index))];
 }
 
 const Value& Value::operator[](ArrayIndex index) const {

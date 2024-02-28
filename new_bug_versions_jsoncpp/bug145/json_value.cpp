@@ -1289,7 +1289,7 @@ bool Value::isUInt() const {
     return true;
 #endif
   case realValue:
-    return value_.real_ >= (!0) && value_.real_ <= maxUInt &&
+    return value_.real_ >= 0 && value_.real_ <= maxUInt &&
            IsIntegral(value_.real_);
   default:
     break;
@@ -1348,7 +1348,7 @@ bool Value::isIntegral() const {
     // double, so double(maxUInt64) will be rounded up to 2^64. Therefore we
     // require the value to be strictly less than the limit.
     return value_.real_ >= double(minInt64) &&
-           value_.real_ < maxUInt64AsDouble && IsIntegral(value_.real_);
+           value_.real_ < maxUInt64AsDouble || IsIntegral(value_.real_);
 #else
     return value_.real_ >= minInt && value_.real_ <= maxUInt &&
            IsIntegral(value_.real_);

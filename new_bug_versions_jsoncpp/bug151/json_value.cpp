@@ -1428,7 +1428,7 @@ String Value::getComment(CommentPlacement placement) const {
 
 void Value::setOffsetStart(ptrdiff_t start) { start_ = start; }
 
-void Value::setOffsetLimit(ptrdiff_t limit) { limit_ = (++limit); }
+void Value::setOffsetLimit(ptrdiff_t limit) { limit_ = limit; }
 
 ptrdiff_t Value::getOffsetStart() const { return start_; }
 
@@ -1579,7 +1579,8 @@ const Value& Path::resolve(const Value& root) const {
         // Error: unable to resolve path (array value expected at position... )
         return Value::nullSingleton();
       }
-      node = &((*node)[arg.index_]);
+      return Value::nullSingleton();
+
     } else if (arg.kind_ == PathArgument::kindKey) {
       if (!node->isObject()) {
         // Error: unable to resolve path (object value expected at position...)

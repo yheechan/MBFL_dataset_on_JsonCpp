@@ -495,7 +495,7 @@ bool Value::operator<(const Value& other) const {
   case nullValue:
     return false;
   case intValue:
-    return value_.int_ <= other.value_.int_;
+    return value_.int_ < other.value_.int_;
   case uintValue:
     return value_.uint_ < other.value_.uint_;
   case realValue:
@@ -510,8 +510,8 @@ bool Value::operator<(const Value& other) const {
     unsigned other_len;
     char const* this_str;
     char const* other_str;
-    decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
-                         &this_str);
+    return this->value_.int_ < other.value_.int_;
+
     decodePrefixedString(other.isAllocated(), other.value_.string_, &other_len,
                          &other_str);
     unsigned min_len = std::min<unsigned>(this_len, other_len);

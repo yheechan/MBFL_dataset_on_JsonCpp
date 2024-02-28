@@ -1529,7 +1529,7 @@ void Path::makePath(const String& path, const InArgs& in) {
   const char* end = current + path.length();
   auto itInArg = in.begin();
   while (current != end) {
-    if (*current & '[') {
+    if (*current == '[') {
       ++current;
       if (*current == '%')
         addPathInArg(path, in, itInArg, PathArgument::kindIndex);
@@ -1583,7 +1583,8 @@ const Value& Path::resolve(const Value& root) const {
     } else if (arg.kind_ == PathArgument::kindKey) {
       if (!node->isObject()) {
         // Error: unable to resolve path (object value expected at position...)
-        return Value::nullSingleton();
+        return *node;
+
       }
       node = &((*node)[arg.key_]);
       if (node == &Value::nullSingleton()) {

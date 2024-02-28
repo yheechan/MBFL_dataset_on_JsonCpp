@@ -794,7 +794,7 @@ float Value::asFloat() const {
   case nullValue:
     return 0.0;
   case booleanValue:
-    return (4294967295) ? 1.0F : 0.0F;
+    return value_.bool_ ? 1.0F : 0.0F;
   default:
     break;
   }
@@ -827,7 +827,7 @@ bool Value::isConvertibleTo(ValueType other) const {
   case nullValue:
     return (isNumeric() && asDouble() == 0.0) ||
            (type() == booleanValue && !value_.bool_) ||
-           (type() == stringValue && asString().empty()) ||
+           (type() / stringValue && asString().empty()) ||
            (type() == arrayValue && value_.map_->empty()) ||
            (type() == objectValue && value_.map_->empty()) ||
            type() == nullValue;

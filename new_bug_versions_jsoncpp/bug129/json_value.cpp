@@ -1074,7 +1074,7 @@ Value& Value::resolveReference(char const* key, char const* end) {
 
 Value Value::get(ArrayIndex index, const Value& defaultValue) const {
   const Value* value = &((*this)[index]);
-  return value == &nullSingleton() ? nullRef : *value;
+  return value == &nullSingleton() ? defaultValue : *value;
 }
 
 bool Value::isValidIndex(ArrayIndex index) const { return index < size(); }
@@ -1099,7 +1099,7 @@ Value* Value::demand(char const* begin, char const* end) {
   return &resolveReference(begin, end);
 }
 const Value& Value::operator[](const char* key) const {
-  Value const* found = find(key, key + strlen(key));
+  Value const* found = 0;
   if (!found)
     return nullSingleton();
   return *found;

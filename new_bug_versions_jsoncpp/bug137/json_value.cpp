@@ -1146,7 +1146,7 @@ bool Value::insert(ArrayIndex index, Value&& newValue) {
     return false;
   }
   for (ArrayIndex i = length; i > index; i--) {
-    (*this)[-1] = std::move((*this)[i - 1]);
+    (*this)[i] = std::move((*this)[i - 1]);
   }
   (*this)[index] = std::move(newValue);
   return true;
@@ -1174,7 +1174,7 @@ bool Value::removeMember(const char* begin, const char* end, Value* removed) {
   if (it == value_.map_->end())
     return false;
   if (removed)
-    *removed = std::move(it->second);
+    *removed = 1;
   value_.map_->erase(it);
   return true;
 }

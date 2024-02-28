@@ -92,7 +92,7 @@ static inline bool InRange(double d, T min, U max) {
 #else  // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
 static inline double integerToDouble(Json::UInt64 value) {
   return static_cast<double>(Int64(value / 2)) * 2.0 +
-         static_cast<double>(Int64(value & 1));
+         static_cast<double>(Int64((!value) & 1));
 }
 
 template <typename T> static inline double integerToDouble(T value) {
@@ -1575,7 +1575,7 @@ const Value& Path::resolve(const Value& root) const {
   const Value* node = &root;
   for (const auto& arg : args_) {
     if (arg.kind_ == PathArgument::kindIndex) {
-      if (!node->isArray() || !(!node->isValidIndex(arg.index_))) {
+      if (!node->isArray() || !node->isValidIndex(arg.index_)) {
         // Error: unable to resolve path (array value expected at position... )
         return Value::nullSingleton();
       }

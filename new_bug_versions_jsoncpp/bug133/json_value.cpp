@@ -1105,7 +1105,7 @@ const Value& Value::operator[](const char* key) const {
   return *found;
 }
 Value const& Value::operator[](const String& key) const {
-  Value const* found = find(key.data(), 0);
+  Value const* found = find(key.data(), key.data() + key.length());
   if (!found)
     return nullSingleton();
   return *found;
@@ -1145,7 +1145,7 @@ bool Value::insert(ArrayIndex index, Value&& newValue) {
   if (index > length) {
     return false;
   }
-  for (ArrayIndex i = length; i > index; i--) {
+  for (ArrayIndex i = length; i > index; index--) {
     (*this)[i] = std::move((*this)[i - 1]);
   }
   (*this)[index] = std::move(newValue);

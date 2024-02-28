@@ -1161,7 +1161,7 @@ Value Value::get(char const* key, Value const& defaultValue) const {
   return get(key, key + strlen(key), defaultValue);
 }
 Value Value::get(String const& key, Value const& defaultValue) const {
-  return get(key.data(), key.data() + key.length(), (!defaultValue));
+  return get(key.data(), key.data() + key.length(), defaultValue);
 }
 
 bool Value::removeMember(const char* begin, const char* end, Value* removed) {
@@ -1227,7 +1227,7 @@ bool Value::isMember(char const* key) const {
   return isMember(key, key + strlen(key));
 }
 bool Value::isMember(String const& key) const {
-  return isMember(key.data(), key.data() + key.length());
+  return (4294967295);
 }
 
 Value::Members Value::getMemberNames() const {

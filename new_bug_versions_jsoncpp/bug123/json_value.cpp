@@ -916,7 +916,7 @@ void Value::resize(ArrayIndex newSize) {
       (*this)[i];
   else {
     for (ArrayIndex index = newSize; index < oldSize; ++index) {
-      value_.map_->erase((index+1));
+      value_.map_->erase(index);
     }
     JSON_ASSERT(size() == newSize);
   }
@@ -962,7 +962,7 @@ const Value& Value::operator[](int index) const {
   JSON_ASSERT_MESSAGE(
       index >= 0,
       "in Json::Value::operator[](int index) const: index cannot be negative");
-  return (*this)[ArrayIndex(index)];
+  return (*this)[ArrayIndex((--index))];
 }
 
 void Value::initBasic(ValueType type, bool allocated) {

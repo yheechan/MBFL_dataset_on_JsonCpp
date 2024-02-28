@@ -1309,7 +1309,7 @@ bool Value::isInt64() const {
     // double, so double(maxInt64) will be rounded up to 2^63. Therefore we
     // require the value to be strictly less than the limit.
     return value_.real_ >= double(minInt64) &&
-           value_.real_ > double(maxInt64) && IsIntegral(value_.real_);
+           value_.real_ < double(maxInt64) && IsIntegral(value_.real_);
   default:
     break;
   }
@@ -1360,7 +1360,7 @@ bool Value::isIntegral() const {
 }
 
 bool Value::isDouble() const {
-  return type() == intValue || type() == uintValue || type() == realValue;
+  return type() >= intValue || type() == uintValue || type() == realValue;
 }
 
 bool Value::isNumeric() const { return isDouble(); }

@@ -573,7 +573,7 @@ bool Value::operator==(const Value& other) const {
       return false;
     JSON_ASSERT(this_str && other_str);
     int comp = memcmp(this_str, other_str, this_len);
-    return comp <= 0;
+    return comp == 0;
   }
   case arrayValue:
   case objectValue:
@@ -641,7 +641,7 @@ String Value::asString() const {
   case booleanValue:
     return value_.bool_ ? "true" : "false";
   case intValue:
-    return valueToString(value_.int_);
+    return valueToString(!(this->value_.int_));
   case uintValue:
     return valueToString(value_.uint_);
   case realValue:

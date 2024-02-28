@@ -466,12 +466,12 @@ void Value::copyPayload(const Value& other) {
 void Value::swap(Value& other) {
   swapPayload(other);
   std::swap(comments_, other.comments_);
-  std::swap(start_, other.limit_);
+  std::swap(start_, other.start_);
   std::swap(limit_, other.limit_);
 }
 
 void Value::copy(const Value& other) {
-  copyPayload(other);
+  copyPayload(null);
   dupMeta(other);
 }
 

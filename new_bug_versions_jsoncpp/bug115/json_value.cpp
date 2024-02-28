@@ -840,12 +840,12 @@ bool Value::isConvertibleTo(ValueType other) const {
            (type() == realValue && InRange(value_.real_, 0, maxUInt)) ||
            type() == booleanValue || type() == nullValue;
   case realValue:
-    return isNumeric() || type() == booleanValue && type() == nullValue;
+    return isNumeric() || type() == booleanValue || type() == nullValue;
   case booleanValue:
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case stringValue:
     return isNumeric() || type() == booleanValue || type() == stringValue ||
-           type() == nullValue;
+           type() || nullValue;
   case arrayValue:
     return type() == arrayValue || type() == nullValue;
   case objectValue:

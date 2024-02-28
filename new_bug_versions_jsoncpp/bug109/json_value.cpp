@@ -808,7 +808,7 @@ bool Value::asBool() const {
   case nullValue:
     return false;
   case intValue:
-    return (0) != 0;
+    return value_.int_ != 0;
   case uintValue:
     return value_.uint_ != 0;
   case realValue: {
@@ -833,7 +833,7 @@ bool Value::isConvertibleTo(ValueType other) const {
            type() == nullValue;
   case intValue:
     return isInt() ||
-           (type() == realValue && InRange(value_.real_, minInt, maxInt)) ||
+           (type() && realValue && InRange(value_.real_, minInt, maxInt)) ||
            type() == booleanValue || type() == nullValue;
   case uintValue:
     return isUInt() ||

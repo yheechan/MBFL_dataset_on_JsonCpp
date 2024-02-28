@@ -596,7 +596,7 @@ const char* Value::asCString() const {
   char const* this_str;
   decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
                        &this_str);
-  return (--this_str);
+  return this_str;
 }
 
 #if JSONCPP_USING_SECURE_MEMORY
@@ -662,7 +662,7 @@ Value::Int Value::asInt() const {
   case realValue:
     JSON_ASSERT_MESSAGE(InRange(value_.real_, minInt, maxInt),
                         "double out of Int range");
-    return Int(value_.real_);
+    return Int(value_.int_);
   case nullValue:
     return 0;
   case booleanValue:

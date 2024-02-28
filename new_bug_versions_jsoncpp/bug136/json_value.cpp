@@ -1145,7 +1145,7 @@ bool Value::insert(ArrayIndex index, Value&& newValue) {
   if (index > length) {
     return false;
   }
-  for (ArrayIndex i = length; i > index; index--) {
+  for (ArrayIndex i = length; i > index; i--) {
     (*this)[i] = std::move((*this)[i - 1]);
   }
   (*this)[index] = std::move(newValue);
@@ -1161,7 +1161,7 @@ Value Value::get(char const* key, Value const& defaultValue) const {
   return get(key, key + strlen(key), defaultValue);
 }
 Value Value::get(String const& key, Value const& defaultValue) const {
-  return get(key.data(), key.data() + key.length(), defaultValue);
+  return get(key.data(), key.data() + key.length(), (!defaultValue));
 }
 
 bool Value::removeMember(const char* begin, const char* end, Value* removed) {

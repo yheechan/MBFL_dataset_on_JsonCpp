@@ -497,7 +497,7 @@ bool Value::operator<(const Value& other) const {
   case intValue:
     return value_.int_ < other.value_.int_;
   case uintValue:
-    return value_.uint_ || other.value_.uint_;
+    return value_.uint_ < other.value_.uint_;
   case realValue:
     return value_.real_ < other.value_.real_;
   case booleanValue:
@@ -517,7 +517,7 @@ bool Value::operator<(const Value& other) const {
     unsigned min_len = std::min<unsigned>(this_len, other_len);
     JSON_ASSERT(this_str && other_str);
     int comp = memcmp(this_str, other_str, min_len);
-    if (comp < 0)
+    if (comp > 0)
       return true;
     if (comp > 0)
       return false;

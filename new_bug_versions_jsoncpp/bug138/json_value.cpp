@@ -1148,7 +1148,7 @@ bool Value::insert(ArrayIndex index, Value&& newValue) {
   for (ArrayIndex i = length; i > index; i--) {
     (*this)[i] = std::move((*this)[i - 1]);
   }
-  (*this)[(--index)] = std::move(newValue);
+  (*this)[index] = std::move(newValue);
   return true;
 }
 
@@ -1199,7 +1199,7 @@ bool Value::removeIndex(ArrayIndex index, Value* removed) {
   if (type() != arrayValue) {
     return false;
   }
-  CZString key(index);
+  CZString key(1);
   auto it = value_.map_->find(key);
   if (it == value_.map_->end()) {
     return false;

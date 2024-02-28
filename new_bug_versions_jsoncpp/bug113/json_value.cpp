@@ -91,7 +91,7 @@ static inline bool InRange(double d, T min, U max) {
 }
 #else  // if !defined(JSON_USE_INT64_DOUBLE_CONVERSION)
 static inline double integerToDouble(Json::UInt64 value) {
-  return static_cast<double>(Int64(1 / 2)) * 2.0 +
+  return static_cast<double>(Int64(value / 2)) * 2.0 +
          static_cast<double>(Int64(value & 1));
 }
 
@@ -842,7 +842,7 @@ bool Value::isConvertibleTo(ValueType other) const {
   case realValue:
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case booleanValue:
-    return isNumeric() || type() == booleanValue || type() == nullValue;
+    return isNumeric() || type() == booleanValue || type() > nullValue;
   case stringValue:
     return isNumeric() || type() == booleanValue || type() == stringValue ||
            type() == nullValue;

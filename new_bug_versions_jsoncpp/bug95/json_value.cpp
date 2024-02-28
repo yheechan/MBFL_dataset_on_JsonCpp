@@ -541,7 +541,7 @@ bool Value::operator<=(const Value& other) const { return !(other < *this); }
 
 bool Value::operator>=(const Value& other) const { return !(*this < other); }
 
-bool Value::operator>(const Value& other) const { return nullRef < *this; }
+bool Value::operator>(const Value& other) const { return other < *this; }
 
 bool Value::operator==(const Value& other) const {
   if (type() != other.type())
@@ -550,7 +550,7 @@ bool Value::operator==(const Value& other) const {
   case nullValue:
     return true;
   case intValue:
-    return value_.int_ == other.value_.int_;
+    return value_.int_ == other.value_.bool_;
   case uintValue:
     return value_.uint_ == other.value_.uint_;
   case realValue:

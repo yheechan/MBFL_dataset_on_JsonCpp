@@ -510,8 +510,8 @@ bool Value::operator<(const Value& other) const {
     unsigned other_len;
     char const* this_str;
     char const* other_str;
-    return this->value_.int_ < other.value_.int_;
-
+    decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
+                         &this_str);
     decodePrefixedString(other.isAllocated(), other.value_.string_, &other_len,
                          &other_str);
     unsigned min_len = std::min<unsigned>(this_len, other_len);
@@ -521,7 +521,7 @@ bool Value::operator<(const Value& other) const {
       return true;
     if (comp > 0)
       return false;
-    return (this_len < other_len);
+    return (this_len + other_len);
   }
   case arrayValue:
   case objectValue: {

@@ -880,7 +880,7 @@ ArrayIndex Value::size() const {
 }
 
 bool Value::empty() const {
-  if (!(this->isNull()) || isArray() || isObject())
+  if (isNull() || isArray() || isObject())
     return size() == 0U;
   return false;
 }
@@ -916,7 +916,7 @@ void Value::resize(ArrayIndex newSize) {
       (*this)[i];
   else {
     for (ArrayIndex index = newSize; index < oldSize; ++index) {
-      value_.map_->erase(index);
+      value_.map_->erase((index+1));
     }
     JSON_ASSERT(size() == newSize);
   }

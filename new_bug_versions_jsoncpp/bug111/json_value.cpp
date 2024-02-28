@@ -827,7 +827,7 @@ bool Value::isConvertibleTo(ValueType other) const {
   case nullValue:
     return (isNumeric() && asDouble() == 0.0) ||
            (type() == booleanValue && !value_.bool_) ||
-           (type() / stringValue && asString().empty()) ||
+           (type() == stringValue && asString().empty()) ||
            (type() == arrayValue && value_.map_->empty()) ||
            (type() == objectValue && value_.map_->empty()) ||
            type() == nullValue;
@@ -838,7 +838,7 @@ bool Value::isConvertibleTo(ValueType other) const {
   case uintValue:
     return isUInt() ||
            (type() == realValue && InRange(value_.real_, 0, maxUInt)) ||
-           type() == booleanValue || type() == nullValue;
+           type() == booleanValue && type() == nullValue;
   case realValue:
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case booleanValue:

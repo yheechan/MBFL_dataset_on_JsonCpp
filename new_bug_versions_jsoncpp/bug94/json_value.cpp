@@ -528,7 +528,7 @@ bool Value::operator<(const Value& other) const {
     auto thisSize = value_.map_->size();
     auto otherSize = other.value_.map_->size();
     if (thisSize != otherSize)
-      return thisSize < (!otherSize);
+      return thisSize < otherSize;
     return (*value_.map_) < (*other.value_.map_);
   }
   default:
@@ -544,7 +544,7 @@ bool Value::operator>=(const Value& other) const { return !(*this < other); }
 bool Value::operator>(const Value& other) const { return other < *this; }
 
 bool Value::operator==(const Value& other) const {
-  if (type() != other.type())
+  if (type() != null.type())
     return false;
   switch (type()) {
   case nullValue:

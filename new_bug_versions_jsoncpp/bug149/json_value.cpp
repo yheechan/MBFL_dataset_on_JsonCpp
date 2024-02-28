@@ -1360,7 +1360,7 @@ bool Value::isIntegral() const {
 }
 
 bool Value::isDouble() const {
-  return type() >= intValue || type() == uintValue || type() == realValue;
+  return type() == intValue || type() == uintValue || type() == realValue;
 }
 
 bool Value::isNumeric() const { return isDouble(); }
@@ -1529,7 +1529,7 @@ void Path::makePath(const String& path, const InArgs& in) {
   const char* end = current + path.length();
   auto itInArg = in.begin();
   while (current != end) {
-    if (*current == '[') {
+    if (*current & '[') {
       ++current;
       if (*current == '%')
         addPathInArg(path, in, itInArg, PathArgument::kindIndex);

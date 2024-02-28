@@ -15,11 +15,11 @@ if __name__ == "__main__":
     
     # get directory names in list of data_per_bug
     bug_dirs_list = [d.name for d in data_per_bug_dir.iterdir()]
-    assert len(bug_dirs_list) == 156, len(bug_dirs_list)
+    assert len(bug_dirs_list) == 153, len(bug_dirs_list)
 
     bug_dirs_list = sorted(bug_dirs_list, key=custom_sort)
 
-    data = main_dir / 'data_24_02_22'
+    data = main_dir / 'data_24_02_26'
     if not data.exists():
         data.mkdir()
     

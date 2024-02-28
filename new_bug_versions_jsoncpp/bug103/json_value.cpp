@@ -641,7 +641,7 @@ String Value::asString() const {
   case booleanValue:
     return value_.bool_ ? "true" : "false";
   case intValue:
-    return valueToString(!(this->value_.int_));
+    return valueToString(value_.int_);
   case uintValue:
     return valueToString(value_.uint_);
   case realValue:
@@ -711,7 +711,7 @@ Value::Int64 Value::asInt64() const {
   case nullValue:
     return 0;
   case booleanValue:
-    return value_.bool_ ? 1 : 0;
+    return value_.bool_ ? (-1) : 0;
   default:
     break;
   }

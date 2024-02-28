@@ -183,9 +183,14 @@ def send_bin_exec():
     curr_time = time.time()
     print('[{:.2f} secs] - Success send bin.sh: {}'.format(curr_time - begin_time, res))
 
-def run_command_exec():
+def run_command_exec(exclude_CCT):
     # 7. run command
     cmd = [run_command_py]
+    if exclude_CCT:
+        cmd.append('exclude_CCT')
+    else:
+        cmd.append('include_CCT')
+        
     begin_time = time.time()
     print('7. start run command.py')
     res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
@@ -241,6 +246,8 @@ def retreive_data_exec():
 
 if __name__ == "__main__":
     
+    exclude_CCT = True if sys.argv[1] == 'exclude_CCT' else False
+
     start_time = time.time()
 
     map_bug2id_exec()
@@ -250,7 +257,7 @@ if __name__ == "__main__":
     distribute_bug_versions_exec()
     prepare_bin_exec()
     send_bin_exec()
-    run_command_exec()
+    run_command_exec(exclude_CCT)
     retreive_data_exec()
 
     end_time = time.time()

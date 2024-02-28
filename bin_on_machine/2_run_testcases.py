@@ -124,6 +124,7 @@ def rebuild_jsoncpp(build_dir):
         '-DCMAKE_CXX_COMPILER={}'.format(clangPP),
         # '-DCMAKE_CXX_FLAGS=-O0 -fprofile-arcs -ftest-coverage -g -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION --save-temps',
         '-DCMAKE_CXX_FLAGS=-O0 -fprofile-arcs -ftest-coverage -g -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION',
+        # '-DCMAKE_CXX_FLAGS=-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION',
         '-DBUILD_SHARED_LIBS=OFF', '-G',
         'Unix Makefiles',
         '../'
@@ -170,14 +171,14 @@ if __name__ == "__main__":
     rebuild_jsoncpp(build_dir)
 
     tc_dict = get_tc_dict(jsoncpp_test)
-    failing_tc_dict, passing_tc_list = run_tc(
+    failing_tc_dict, passing_tc_dict = run_tc(
         core_dir, jsoncpp_test, tc_dict, jsoncpp_dir, gen_cov=gen_cov)
 
     print('{} fails + {} pass = {} total'.format(
-        len(failing_tc_dict), len(passing_tc_list),
-        len(failing_tc_dict)+len(passing_tc_list))
+        len(failing_tc_dict), len(passing_tc_dict),
+        len(failing_tc_dict)+len(passing_tc_dict))
     )
 
     write_tc_info(core_dir, failing_tc_dict, 'failing_testcases')
-    write_tc_info(core_dir, passing_tc_list, 'passing_testcases')
+    write_tc_info(core_dir, passing_tc_dict, 'passing_testcases')
     

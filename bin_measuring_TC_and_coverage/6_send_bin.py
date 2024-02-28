@@ -25,12 +25,16 @@ def reset_mfbl(bash_name, bin_name):
     bash_file.write('date\n')
 
     bin_dir = main_dir / bin_name
+    data_in_need_dir = main_dir / 'data_in_need'
     number_of_cores = 8
     cnt = 0
     for machine in machines:
         # send bin to machine
         bash_file.write('scp -r {} {}:/home/yangheechan/mbfl/ &\n'.format(
             bin_dir, machine
+        ))
+        bash_file.write('scp -r {} {}:/home/yangheechan/mbfl/ &\n'.format(
+            data_in_need_dir, machine
         ))
         cnt += 1
         if cnt%5 == 0:

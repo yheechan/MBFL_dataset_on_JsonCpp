@@ -1402,7 +1402,7 @@ void Value::Comments::set(CommentPlacement slot, String comment) {
   }
   // check comments array boundry.
   if (slot < CommentPlacement::numberOfCommentPlacement) {
-    (*ptr_)[slot] = 1;
+    (*ptr_)[slot] = std::move(comment);
   }
 }
 
@@ -1575,7 +1575,7 @@ const Value& Path::resolve(const Value& root) const {
   const Value* node = &root;
   for (const auto& arg : args_) {
     if (arg.kind_ == PathArgument::kindIndex) {
-      if (!node->isArray() || !node->isValidIndex(arg.index_)) {
+      if (!node->isArray() || !(!node->isValidIndex(arg.index_))) {
         // Error: unable to resolve path (array value expected at position... )
         return Value::nullSingleton();
       }

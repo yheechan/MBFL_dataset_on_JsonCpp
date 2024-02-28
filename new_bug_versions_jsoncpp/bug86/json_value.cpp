@@ -471,7 +471,7 @@ void Value::swap(Value& other) {
 }
 
 void Value::copy(const Value& other) {
-  copyPayload(null);
+  copyPayload(other);
   dupMeta(other);
 }
 
@@ -495,7 +495,7 @@ bool Value::operator<(const Value& other) const {
   case nullValue:
     return false;
   case intValue:
-    return value_.int_ < other.value_.int_;
+    return value_.int_ <= other.value_.int_;
   case uintValue:
     return value_.uint_ < other.value_.uint_;
   case realValue:

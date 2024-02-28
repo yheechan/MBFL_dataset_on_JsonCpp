@@ -73,120 +73,116 @@ scp -r faster15:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset
 scp -r faster15:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug152 & 
 scp -r faster15:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug153 & 
 sleep 1s
-scp -r faster15:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug154 & 
-scp -r faster15:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug155 & 
-scp -r faster15:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug156 & 
-scp -r faster16:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug16 & 
-scp -r faster16:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug17 & 
+scp -r faster15:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug16 & 
+scp -r faster15:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug17 & 
+scp -r faster15:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug18 & 
+scp -r faster16:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug19 & 
+scp -r faster16:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug2 & 
 sleep 1s
-scp -r faster16:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug18 & 
-scp -r faster16:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug19 & 
-scp -r faster16:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug2 & 
-scp -r faster16:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug20 & 
-scp -r faster16:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug21 & 
+scp -r faster16:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug20 & 
+scp -r faster16:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug21 & 
+scp -r faster16:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug22 & 
+scp -r faster16:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug23 & 
+scp -r faster16:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug24 & 
 sleep 1s
-scp -r faster16:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug22 & 
-scp -r faster17:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug23 & 
-scp -r faster17:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug24 & 
-scp -r faster17:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug25 & 
-scp -r faster17:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug26 & 
+scp -r faster16:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug25 & 
+scp -r faster17:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug26 & 
+scp -r faster17:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug27 & 
+scp -r faster17:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug28 & 
+scp -r faster17:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug29 & 
 sleep 1s
-scp -r faster17:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug27 & 
-scp -r faster17:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug28 & 
-scp -r faster17:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug29 & 
-scp -r faster17:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug3 & 
-scp -r faster18:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug30 & 
+scp -r faster17:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug3 & 
+scp -r faster17:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug30 & 
+scp -r faster17:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug31 & 
+scp -r faster17:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug32 & 
+scp -r faster18:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug33 & 
 sleep 1s
-scp -r faster18:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug31 & 
-scp -r faster18:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug32 & 
-scp -r faster18:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug33 & 
-scp -r faster18:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug34 & 
-scp -r faster18:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug35 & 
+scp -r faster18:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug34 & 
+scp -r faster18:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug35 & 
+scp -r faster18:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug36 & 
+scp -r faster18:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug37 & 
+scp -r faster18:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug38 & 
 sleep 1s
-scp -r faster18:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug36 & 
-scp -r faster18:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug37 & 
-scp -r faster19:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug38 & 
-scp -r faster19:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug39 & 
-scp -r faster19:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug4 & 
+scp -r faster18:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug39 & 
+scp -r faster18:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug4 & 
+scp -r faster19:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug40 & 
+scp -r faster19:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug41 & 
+scp -r faster19:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug42 & 
 sleep 1s
-scp -r faster19:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug40 & 
-scp -r faster19:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug41 & 
-scp -r faster19:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug42 & 
-scp -r faster19:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug43 & 
-scp -r faster19:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug44 & 
+scp -r faster19:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug43 & 
+scp -r faster19:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug44 & 
+scp -r faster19:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug45 & 
+scp -r faster19:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug46 & 
+scp -r faster19:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug47 & 
 sleep 1s
-scp -r faster20:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug45 & 
-scp -r faster20:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug46 & 
-scp -r faster20:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug47 & 
-scp -r faster20:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug48 & 
-scp -r faster20:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug49 & 
+scp -r faster20:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug48 & 
+scp -r faster20:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug49 & 
+scp -r faster20:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug5 & 
+scp -r faster20:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug50 & 
+scp -r faster20:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug51 & 
 sleep 1s
-scp -r faster20:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug5 & 
-scp -r faster20:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug50 & 
-scp -r faster20:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug51 & 
-scp -r faster21:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug52 & 
-scp -r faster21:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug53 & 
+scp -r faster20:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug52 & 
+scp -r faster20:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug53 & 
+scp -r faster20:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug54 & 
+scp -r faster21:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug55 & 
+scp -r faster21:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug56 & 
 sleep 1s
-scp -r faster21:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug54 & 
-scp -r faster21:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug55 & 
-scp -r faster21:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug56 & 
-scp -r faster21:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug57 & 
-scp -r faster21:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug58 & 
+scp -r faster21:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug57 & 
+scp -r faster21:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug58 & 
+scp -r faster21:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug59 & 
+scp -r faster21:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug6 & 
+scp -r faster21:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug60 & 
 sleep 1s
-scp -r faster21:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug59 & 
-scp -r faster23:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug6 & 
-scp -r faster23:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug60 & 
-scp -r faster23:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug61 & 
-scp -r faster23:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug62 & 
+scp -r faster21:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug61 & 
+scp -r faster23:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug62 & 
+scp -r faster23:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug63 & 
+scp -r faster23:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug64 & 
+scp -r faster23:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug65 & 
 sleep 1s
-scp -r faster23:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug63 & 
-scp -r faster23:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug64 & 
-scp -r faster23:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug65 & 
-scp -r faster23:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug66 & 
-scp -r faster24:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug67 & 
+scp -r faster23:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug66 & 
+scp -r faster23:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug67 & 
+scp -r faster23:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug68 & 
+scp -r faster23:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug69 & 
+scp -r faster24:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug7 & 
 sleep 1s
-scp -r faster24:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug68 & 
-scp -r faster24:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug69 & 
-scp -r faster24:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug7 & 
-scp -r faster24:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug70 & 
-scp -r faster24:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug71 & 
+scp -r faster24:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug70 & 
+scp -r faster24:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug71 & 
+scp -r faster24:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug72 & 
+scp -r faster24:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug73 & 
+scp -r faster24:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug74 & 
 sleep 1s
-scp -r faster24:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug72 & 
-scp -r faster24:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug73 & 
-scp -r faster25:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug74 & 
-scp -r faster25:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug75 & 
-scp -r faster25:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug76 & 
+scp -r faster24:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug75 & 
+scp -r faster24:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug76 & 
+scp -r faster25:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug77 & 
+scp -r faster25:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug78 & 
+scp -r faster25:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug79 & 
 sleep 1s
-scp -r faster25:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug77 & 
-scp -r faster25:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug78 & 
-scp -r faster25:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug79 & 
-scp -r faster25:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug8 & 
-scp -r faster25:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug80 & 
+scp -r faster25:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug8 & 
+scp -r faster25:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug80 & 
+scp -r faster25:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug81 & 
+scp -r faster25:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug82 & 
+scp -r faster25:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug83 & 
 sleep 1s
-scp -r faster26:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug81 & 
-scp -r faster26:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug82 & 
-scp -r faster26:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug83 & 
-scp -r faster26:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug84 & 
-scp -r faster26:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug85 & 
+scp -r faster26:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug84 & 
+scp -r faster26:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug85 & 
+scp -r faster26:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug86 & 
+scp -r faster26:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug87 & 
+scp -r faster26:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug88 & 
 sleep 1s
-scp -r faster26:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug86 & 
-scp -r faster26:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug87 & 
-scp -r faster26:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug88 & 
-scp -r faster27:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug89 & 
-scp -r faster27:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug9 & 
+scp -r faster26:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug89 & 
+scp -r faster26:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug9 & 
+scp -r faster26:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug90 & 
+scp -r faster27:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug91 & 
+scp -r faster27:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug92 & 
 sleep 1s
-scp -r faster27:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug90 & 
-scp -r faster27:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug91 & 
-scp -r faster27:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug92 & 
-scp -r faster27:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug93 & 
-scp -r faster27:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug94 & 
+scp -r faster27:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug93 & 
+scp -r faster27:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug94 & 
+scp -r faster27:/home/yangheechan/mbfl/core4/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug95 & 
+scp -r faster27:/home/yangheechan/mbfl/core5/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug96 & 
+scp -r faster27:/home/yangheechan/mbfl/core6/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug97 & 
 sleep 1s
-scp -r faster27:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug95 & 
-scp -r faster29:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug96 & 
-scp -r faster29:/home/yangheechan/mbfl/core1/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug97 & 
-scp -r faster29:/home/yangheechan/mbfl/core2/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug98 & 
-scp -r faster29:/home/yangheechan/mbfl/core3/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug99 & 
-sleep 1s
+scp -r faster27:/home/yangheechan/mbfl/core7/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug98 & 
+scp -r faster29:/home/yangheechan/mbfl/core0/data /home/yangheechan/mbfl-dataset-gen/MBFL_dataset_on_JsonCpp/data_per_bug/bug99 & 
 echo scp done, waiting...
 date
 wait

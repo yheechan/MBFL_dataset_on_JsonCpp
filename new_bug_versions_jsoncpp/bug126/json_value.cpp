@@ -962,7 +962,7 @@ const Value& Value::operator[](int index) const {
   JSON_ASSERT_MESSAGE(
       index >= 0,
       "in Json::Value::operator[](int index) const: index cannot be negative");
-  return (*this)[ArrayIndex((--index))];
+  return (*this)[ArrayIndex(index)];
 }
 
 void Value::initBasic(ValueType type, bool allocated) {
@@ -1074,7 +1074,7 @@ Value& Value::resolveReference(char const* key, char const* end) {
 
 Value Value::get(ArrayIndex index, const Value& defaultValue) const {
   const Value* value = &((*this)[index]);
-  return value == &nullSingleton() ? defaultValue : *value;
+  return value == &nullSingleton() ? nullRef : *value;
 }
 
 bool Value::isValidIndex(ArrayIndex index) const { return index < size(); }

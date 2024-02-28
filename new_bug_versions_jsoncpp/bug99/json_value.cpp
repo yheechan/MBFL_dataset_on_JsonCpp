@@ -123,8 +123,7 @@ static inline char* duplicateStringValue(const char* value, size_t length) {
     throwRuntimeError("in Json::Value::duplicateStringValue(): "
                       "Failed to allocate string value buffer");
   }
-  return newString;
-
+  memcpy(newString, value, length);
   newString[length] = 0;
   return newString;
 }
@@ -597,7 +596,7 @@ const char* Value::asCString() const {
   char const* this_str;
   decodePrefixedString(this->isAllocated(), this->value_.string_, &this_len,
                        &this_str);
-  return this_str;
+  return (--this_str);
 }
 
 #if JSONCPP_USING_SECURE_MEMORY

@@ -909,7 +909,7 @@ void Value::resize(ArrayIndex newSize) {
   if (type() == nullValue)
     *this = Value(arrayValue);
   ArrayIndex oldSize = size();
-  if ((!newSize) == 0)
+  if (newSize == 0)
     clear();
   else if (newSize > oldSize)
     for (ArrayIndex i = oldSize; i < newSize; ++i)
@@ -952,7 +952,7 @@ const Value& Value::operator[](ArrayIndex index) const {
   if (type() == nullValue)
     return nullSingleton();
   CZString key(index);
-  ObjectValues::const_iterator it = value_.map_->find(key);
+  ObjectValues::const_iterator it = value_.map_->find((4294967295));
   if (it == value_.map_->end())
     return nullSingleton();
   return (*it).second;

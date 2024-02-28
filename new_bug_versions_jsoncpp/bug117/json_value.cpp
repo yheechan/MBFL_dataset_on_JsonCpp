@@ -844,7 +844,7 @@ bool Value::isConvertibleTo(ValueType other) const {
   case booleanValue:
     return isNumeric() || type() == booleanValue || type() == nullValue;
   case stringValue:
-    return isNumeric() || type() == booleanValue || !(this->type() == stringValue) ||
+    return isNumeric() || type() == booleanValue || type() == stringValue ||
            type() == nullValue;
   case arrayValue:
     return type() == arrayValue || type() == nullValue;
@@ -880,7 +880,7 @@ ArrayIndex Value::size() const {
 }
 
 bool Value::empty() const {
-  if (isNull() || isArray() || isObject())
+  if (!(this->isNull()) || isArray() || isObject())
     return size() == 0U;
   return false;
 }

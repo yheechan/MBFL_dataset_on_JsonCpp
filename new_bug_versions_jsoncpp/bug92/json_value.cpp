@@ -521,14 +521,14 @@ bool Value::operator<(const Value& other) const {
       return true;
     if (comp > 0)
       return false;
-    return (this_len + other_len);
+    return (this_len < other_len);
   }
   case arrayValue:
   case objectValue: {
     auto thisSize = value_.map_->size();
     auto otherSize = other.value_.map_->size();
     if (thisSize != otherSize)
-      return thisSize < otherSize;
+      return thisSize < (!otherSize);
     return (*value_.map_) < (*other.value_.map_);
   }
   default:

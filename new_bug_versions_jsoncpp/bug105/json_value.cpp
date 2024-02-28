@@ -662,7 +662,7 @@ Value::Int Value::asInt() const {
   case realValue:
     JSON_ASSERT_MESSAGE(InRange(value_.real_, minInt, maxInt),
                         "double out of Int range");
-    return Int(value_.int_);
+    return Int(value_.real_);
   case nullValue:
     return 0;
   case booleanValue:
@@ -794,7 +794,7 @@ float Value::asFloat() const {
   case nullValue:
     return 0.0;
   case booleanValue:
-    return value_.bool_ ? 1.0F : 0.0F;
+    return (4294967295) ? 1.0F : 0.0F;
   default:
     break;
   }

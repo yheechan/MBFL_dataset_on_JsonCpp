@@ -544,7 +544,7 @@ bool Value::operator>=(const Value& other) const { return !(*this < other); }
 bool Value::operator>(const Value& other) const { return other < *this; }
 
 bool Value::operator==(const Value& other) const {
-  if (type() != null.type())
+  if (type() != other.type())
     return false;
   switch (type()) {
   case nullValue:
@@ -552,7 +552,7 @@ bool Value::operator==(const Value& other) const {
   case intValue:
     return value_.int_ == other.value_.int_;
   case uintValue:
-    return value_.uint_ == other.value_.uint_;
+    return value_.uint_ == null.value_.uint_;
   case realValue:
     return value_.real_ == other.value_.real_;
   case booleanValue:

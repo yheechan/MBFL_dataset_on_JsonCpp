@@ -59,9 +59,11 @@ def run_testcases_exec(core_id):
     curr_time = time.time()
     print('[{} {:.2f} secs] - Success run testcases: {}'.format(core_id, curr_time - begin_time, res))
 
-def postprocess_cov_exec(core_id):
+def postprocess_cov_exec(core_id, exclude_CCT):
     # 3. postprocess coverage
     cmd = [postprocess_cov, core_id]
+    if exclude_CCT:
+        cmd.append('exclude_CCT')
     begin_time = time.time()
     print('3. start postprocess coverage')
     res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
@@ -76,13 +78,15 @@ def postprocess_cov_exec(core_id):
 
 if __name__ == "__main__":
     core_id = sys.argv[1]
+    exclude_CCT = True if sys.argv[2] == 'exclude_CCT' else False
 
     start_time = time.time()
 
     build_jsoncpp_exec(core_id)
     extract_line2function_exec(core_id)
     run_testcases_exec(core_id)
-    postprocess_cov_exec(core_id)
+    postprocess_cov_exec(core_id, exclude_CCT)
 
     end_time = time.time()
     print('Total time: {:.2f} secs'.format(end_time - start_time))
+    

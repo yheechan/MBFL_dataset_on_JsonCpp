@@ -1348,7 +1348,7 @@ bool Value::isIntegral() const {
     // double, so double(maxUInt64) will be rounded up to 2^64. Therefore we
     // require the value to be strictly less than the limit.
     return value_.real_ >= double(minInt64) &&
-           value_.real_ < maxUInt64AsDouble || IsIntegral(value_.real_);
+           value_.real_ < maxUInt64AsDouble && IsIntegral(value_.real_);
 #else
     return value_.real_ >= minInt && value_.real_ <= maxUInt &&
            IsIntegral(value_.real_);
@@ -1428,7 +1428,7 @@ String Value::getComment(CommentPlacement placement) const {
 
 void Value::setOffsetStart(ptrdiff_t start) { start_ = start; }
 
-void Value::setOffsetLimit(ptrdiff_t limit) { limit_ = limit; }
+void Value::setOffsetLimit(ptrdiff_t limit) { limit_ = (++limit); }
 
 ptrdiff_t Value::getOffsetStart() const { return start_; }
 
