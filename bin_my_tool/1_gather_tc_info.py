@@ -11,7 +11,7 @@ def custom_sort(tc):
     return int(tc[3:])
 
 if __name__ == "__main__":
-    data_per_bug_dir = main_dir / 'data_per_bug'
+    data_per_bug_dir = main_dir / 'prerequisite_data_per_bug'
     
     # get directory names in list of data_per_bug
     bug_dirs_list = [d.name for d in data_per_bug_dir.iterdir()]
@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     bug_dirs_list = sorted(bug_dirs_list, key=custom_sort)
 
-    data = main_dir / 'data_24_02_26'
+    data = main_dir / '_prerequisite_data_240301'
     if not data.exists():
         data.mkdir()
     
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         if not bug_version_dir.exists():
             bug_version_dir.mkdir()
         
-        testcase_info_dir = data_per_bug_dir / bug_version / 'data/testcase_info'
+        testcase_info_dir = data_per_bug_dir / bug_version / 'prerequisite_data/testcase_info'
 
         cmd = ['cp', '-r', str(testcase_info_dir), str(bug_version_dir)]
         res = sp.run(cmd, stdout=sp.PIPE, stderr=sp.PIPE, encoding='utf-8')

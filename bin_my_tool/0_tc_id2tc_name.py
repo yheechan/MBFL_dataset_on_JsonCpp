@@ -53,7 +53,7 @@ if __name__ == "__main__":
     cmd = [jsoncpp_test, '--list-tests']
     process = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE, encoding='utf-8')
     
-    tcid2tcname_txt = main_dir / 'data_in_need/tcid2tcname.csv'
+    tcid2tcname_txt = main_dir / 'data_in_my_need/tcid2tcname.csv'
     tcid2tcname_fp = open(tcid2tcname_txt, 'w')
     tcid2tcname_fp.write('tc_id,tc_name\n')
     

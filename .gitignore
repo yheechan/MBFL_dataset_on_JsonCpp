@@ -1,9 +1,11 @@
-jsoncpp_template/
+original_jsoncpp/
 past_data/
 bin_run_on_machine/
 test*/
 extractor/extractor
 bin_on_machine/extractor
-_data*
+bin_on_machine_mbfl/musicup
 *.zip
 data_per_bug/
+prerequisite_data_per_bug/
+_*

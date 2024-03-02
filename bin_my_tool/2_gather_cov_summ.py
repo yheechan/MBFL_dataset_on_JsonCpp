@@ -11,6 +11,7 @@ def custom_sort(tc):
     return int(tc[3:])
 
 if __name__ == "__main__":
+    data_per_bug_dir = main_dir / 'prerequisite_data_per_bug'
     data_per_bug_dir = main_dir / 'data_per_bug'
     
     # get directory names in list of data_per_bug
@@ -19,7 +20,8 @@ if __name__ == "__main__":
 
     bug_dirs_list = sorted(bug_dirs_list, key=custom_sort)
 
-    data = main_dir / 'data_24_02_26'
+    data = main_dir / '_prerequisite_data_240301'
+    data = main_dir / '_prerequisite_data_past'
     if not data.exists():
         data.mkdir()
 
@@ -38,6 +40,7 @@ if __name__ == "__main__":
 
     total_cnt = 0
     for bug_version in bug_dirs_list:
+        version_sum = data_per_bug_dir / bug_version / 'prerequisite_data/version_summary.csv'
         version_sum = data_per_bug_dir / bug_version / 'data/version_summary.csv'
 
         version_sum_fp = open(version_sum, 'r')
