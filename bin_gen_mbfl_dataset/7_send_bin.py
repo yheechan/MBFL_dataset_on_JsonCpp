@@ -51,4 +51,4 @@ def send_bin(bash_name, bin_name):
             
 
 if __name__ == '__main__':
-    send_bin('6_send_bin.sh', 'bin_on_machine_mbfl')
+    send_bin('7_send_bin.sh', 'bin_on_machine_mbfl_dataset')

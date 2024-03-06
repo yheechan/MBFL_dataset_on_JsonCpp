@@ -9,7 +9,7 @@ bin_gen_mbfl_dir = script_path.parent
 main_dir = bin_gen_mbfl_dir.parent
 
 def get_available_machines():
-    machine_txt = Path('/home/yangheechan/machines.txt')
+    machine_txt = Path('/home/yangheechan/.hosts/mbfl_servers')
     machine_fp = open(machine_txt, 'r')
     machines = machine_fp.readlines()
     machines = [machine.strip() for machine in machines]
@@ -54,7 +54,7 @@ def send_prerequisite_data(bash_name):
     bash_file.write('date\n')
 
     cnt = 0
-    data_per_bug_dir = main_dir / 'data_per_bug'
+    data_per_bug_dir = main_dir / 'prerequisite_data_per_bug'
     assert data_per_bug_dir.exists()
 
     tc_line_cov_list = [
@@ -67,8 +67,8 @@ def send_prerequisite_data(bash_name):
 
         for core_id in assigned_machines[machine]:
             bug_id = assigned_machines[machine][core_id]
-            bug_dir = data_per_bug_dir / bug_id / 'data'
-            assert bug_dir.exists()
+            bug_dir = data_per_bug_dir / bug_id / 'prerequisite_data'
+            assert bug_dir.exists(), bug_dir
 
             print('\t{}: '.format(core_id))
             print('\t\t{}'.format(bug_id))
@@ -125,4 +125,4 @@ def send_prerequisite_data(bash_name):
             
 
 if __name__ == '__main__':
-    send_prerequisite_data('7_distribute_prerequisite_data.sh')
+    send_prerequisite_data('5_distribute_prerequisite_data.sh')

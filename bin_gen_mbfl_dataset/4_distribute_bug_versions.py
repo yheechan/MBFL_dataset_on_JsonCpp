@@ -94,7 +94,7 @@ def send_bug_version(bash_name):
                 machine, core_num, machine, core_num, version_name, core_num
             ))
             # make directory for prepared data
-            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/mbfl_dataset/core{}/prereqsuite_data/coverage_data\" & \n'.format(
+            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/mbfl_dataset/core{}/prerequisite_data/coverage_data\" & \n'.format(
                 machine, core_num,
             ))
             cnt += 1
