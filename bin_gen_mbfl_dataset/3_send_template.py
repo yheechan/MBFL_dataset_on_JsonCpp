@@ -3,6 +3,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_path = Path(os.path.realpath(__file__))
 bin_gen_mbfl_dir = script_path.parent
@@ -16,7 +17,7 @@ def get_available_machines():
     machine_fp.close()
     return machines
 
-def send_template(bash_name, template_name):
+def send_template(bash_name, template_name, experiment_name):
     machines = get_available_machines()
     print("Sending jsoncpp template to {} machines".format(len(machines)))
 
@@ -29,20 +30,20 @@ def send_template(bash_name, template_name):
     for machine in machines:
         # send template to a machine
         for i in range(number_of_cores):
-            bash_file.write('ssh {} \"mkdir -p mbfl_dataset/core{}" &\n'.format(machine, i))
+            bash_file.write('ssh {} \"mkdir -p {}/core{}" &\n'.format(machine, experiment_name, i))
             cnt += 1
             if cnt%5 == 0:
                 bash_file.write("sleep 1s\n")
                 bash_file.write('wait\n')
-        bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/ &\n'.format(
-            template_dir, machine
+        bash_file.write('scp -r {} {}:/home/yangheechan/{}/ &\n'.format(
+            template_dir, machine, experiment_name
         ))
     
     for machine in machines:
         # copy template
         for i in range(number_of_cores):
-            bash_file.write('ssh {} \"cp -r /home/yangheechan/mbfl_dataset/{} /home/yangheechan/mbfl_dataset/core{}/jsoncpp_template\" &\n'.format(
-                machine, template_name, i
+            bash_file.write('ssh {} \"cp -r /home/yangheechan/{}/{} /home/yangheechan/{}/core{}/jsoncpp_template\" &\n'.format(
+                machine, experiment_name, template_name, experiment_name, i
             ))
             cnt += 1
             if cnt%5 == 0:
@@ -59,4 +60,5 @@ def send_template(bash_name, template_name):
             
 
 if __name__ == '__main__':
-    send_template('3_send_template.sh', 'original_jsoncpp')
+    experiment_name = sys.argv[1]
+    send_template('3_send_template.sh', 'original_jsoncpp', experiment_name)

@@ -25,7 +25,11 @@ def get_machinecore2bug():
         machinecore2bug[machine][core] = bug_version
     return machinecore2bug
 
-def run_command(bash_name, machinecore2bug, experiment_name, command_name):
+def retreive_data(bash_name, machinecore2bug, experiment_name):
+    data_per_bug = main_dir / 'mbfl_dataset_per_bug'
+    if not data_per_bug.exists():
+        data_per_bug.mkdir()
+    
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
     
@@ -33,8 +37,15 @@ def run_command(bash_name, machinecore2bug, experiment_name, command_name):
     for machine in machinecore2bug:
         for core in machinecore2bug[machine]:
             bug_version = machinecore2bug[machine][core]
-            command = 'ssh {} \"cd {}/bin_on_machine_mbfl_dataset && ./{} {} > {}.output.{} 2>&1\" & \n'.format(
-                machine, experiment_name, command_name, core, command_name, core
+            bug_version_dir = data_per_bug / bug_version
+            cmd = 'mkdir -p {}'.format(bug_version_dir)
+            res  = sp.call(cmd, shell=True)
+            if res != 0:
+                print('Error: {}'.format(res))
+                exit(1)
+            
+            command = 'scp -r {}:/home/yangheechan/{}/{}/mbfl_data {} & \n'.format(
+                machine, experiment_name, core, bug_version_dir
             )
             bash_file.write(command)
             
@@ -42,8 +53,9 @@ def run_command(bash_name, machinecore2bug, experiment_name, command_name):
                 bash_file.write("sleep 1s\n")
                 # bash_file.write("wait\n")
             cnt += 1
+    print('total bug version data: ', cnt)
     
-    bash_file.write('echo ssh done, waiting...\n')
+    bash_file.write('echo scp done, waiting...\n')
     bash_file.write('date\n')
     bash_file.write('wait\n')
     bash_file.write('date\n')
@@ -53,7 +65,5 @@ def run_command(bash_name, machinecore2bug, experiment_name, command_name):
 
 if __name__ == "__main__":
     experiment_name = sys.argv[1]
-    command_name = sys.argv[2]
-    
     machinecore2bug = get_machinecore2bug()
-    run_command('8-1_run_selective_command.sh', machinecore2bug, experiment_name, command_name)
+    retreive_data('9_retreive_data.sh', machinecore2bug, experiment_name)

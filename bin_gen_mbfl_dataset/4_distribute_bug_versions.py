@@ -3,6 +3,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_path = Path(os.path.realpath(__file__))
 bin_gen_mbfl_dir = script_path.parent
@@ -66,7 +67,7 @@ def get_assigned_machines(machine_list):
     
     return assigned_machines
 
-def send_bug_version(bash_name):
+def send_bug_version(bash_name, experiment_name):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -87,15 +88,21 @@ def send_bug_version(bash_name):
             version_name = assigned_machines[machine][core_num][1]
             file_name = file.name
             print('\t\t{}'.format(file))
-            bash_file.write('scp {} {}:/home/yangheechan/mbfl_dataset/core{}/jsoncpp_template/src/lib_json/{} & \n'.format(
-                file, machine, core_num, file_name
+            bash_file.write('scp {} {}:/home/yangheechan/{}/core{}/jsoncpp_template/src/lib_json/{} & \n'.format(
+                file, machine, experiment_name, core_num, file_name
             ))
-            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/mbfl_dataset/core{}/mbfl_data && echo {}-core{}-{} > /home/yangheechan/mbfl_dataset/core{}/mbfl_data/bug_version.txt\" & \n'.format(
-                machine, core_num, machine, core_num, version_name, core_num
+            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/{}/core{}/mbfl_data/bug_version_code\"\n'.format(
+                machine, experiment_name, core_num
+            ))
+            bash_file.write('scp {} {}:/home/yangheechan/{}/core{}/mbfl_data/bug_version_code/{} & \n'.format(
+                file, machine, experiment_name, core_num, file_name
+            ))
+            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/{}/core{}/mbfl_data && echo {}-core{}-{} > /home/yangheechan/{}/core{}/mbfl_data/bug_version.txt\" & \n'.format(
+                machine, experiment_name, core_num, machine, core_num, version_name, experiment_name, core_num
             ))
             # make directory for prepared data
-            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/mbfl_dataset/core{}/prerequisite_data/coverage_data\" & \n'.format(
-                machine, core_num,
+            bash_file.write('ssh {} \"mkdir -p /home/yangheechan/{}/core{}/prerequisite_data/coverage_data\" & \n'.format(
+                machine, experiment_name, core_num,
             ))
             cnt += 1
             if cnt%5 == 0:
@@ -112,4 +119,5 @@ def send_bug_version(bash_name):
             
 
 if __name__ == '__main__':
-    send_bug_version('4_distribute_bug_versions.sh')
+    experiment_name = sys.argv[1]
+    send_bug_version('4_distribute_bug_versions.sh', experiment_name)

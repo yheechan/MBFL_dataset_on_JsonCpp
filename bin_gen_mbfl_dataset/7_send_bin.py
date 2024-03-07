@@ -3,6 +3,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_path = Path(os.path.realpath(__file__))
 my_tool_dir = script_path.parent
@@ -16,7 +17,7 @@ def get_available_machines():
     machine_fp.close()
     return machines
 
-def send_bin(bash_name, bin_name):
+def send_bin(bash_name, bin_name, experiment_name):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -29,11 +30,11 @@ def send_bin(bash_name, bin_name):
     cnt = 0
     for machine in machines:
         # send bin to machine
-        bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/ &\n'.format(
-            bin_dir, machine
+        bash_file.write('scp -r {} {}:/home/yangheechan/{}/ &\n'.format(
+            bin_dir, machine, experiment_name
         ))
-        bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/ &\n'.format(
-            data_in_need_dir, machine
+        bash_file.write('scp -r {} {}:/home/yangheechan/{}/ &\n'.format(
+            data_in_need_dir, machine, experiment_name
         ))
         cnt += 1
         if cnt%5 == 0:
@@ -51,4 +52,5 @@ def send_bin(bash_name, bin_name):
             
 
 if __name__ == '__main__':
-    send_bin('7_send_bin.sh', 'bin_on_machine_mbfl_dataset')
+    experiment_name = sys.argv[1]
+    send_bin('7_send_bin.sh', 'bin_on_machine_mbfl_dataset', experiment_name)

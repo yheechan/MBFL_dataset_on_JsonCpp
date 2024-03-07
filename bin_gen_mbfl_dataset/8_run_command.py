@@ -25,7 +25,7 @@ def get_machinecore2bug():
         machinecore2bug[machine][core] = bug_version
     return machinecore2bug
 
-def run_command(bash_name, machinecore2bug, mutation_size):
+def run_command(bash_name, machinecore2bug, experiment_name, mutation_size, l_cnt):
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
     
@@ -33,8 +33,8 @@ def run_command(bash_name, machinecore2bug, mutation_size):
     for machine in machinecore2bug:
         for core in machinecore2bug[machine]:
             bug_version = machinecore2bug[machine][core]
-            command = 'ssh {} \"cd mbfl_dataset/bin_on_machine_mbfl_dataset && ./command.py {} {} > output.{} 2>&1\" & \n'.format(
-                machine, core, mutation_size, core
+            command = 'ssh {} \"cd {}/bin_on_machine_mbfl_dataset && ./command.py {} {} {} > output.{} 2>&1\" & \n'.format(
+                machine, experiment_name, core, mutation_size, l_cnt, core
             )
             bash_file.write(command)
             
@@ -52,7 +52,9 @@ def run_command(bash_name, machinecore2bug, mutation_size):
     res = sp.call(cmd, cwd=bin_dir)
 
 if __name__ == "__main__":
-    mutation_size = int(sys.argv[1])
+    experiment_name = sys.argv[1]
+    mutation_size = int(sys.argv[2])
+    l_cnt = sys.argv[3]
     
     machinecore2bug = get_machinecore2bug()
-    run_command('8_run_command.sh', machinecore2bug, mutation_size)
+    run_command('8_run_command.sh', machinecore2bug, experiment_name, mutation_size, l_cnt)

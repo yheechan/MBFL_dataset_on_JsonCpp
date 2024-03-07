@@ -43,6 +43,7 @@ def build_musicup():
     if res.returncode != 0:
         print('build musicup failed: {}'.format(res))
         exit(1)
+    print('musicup built')
     
     musicup_in_bin = main_dir / 'bin_on_machine_mbfl_dataset/musicup'
     if not musicup_in_bin.exists():
@@ -51,6 +52,7 @@ def build_musicup():
         if res.returncode != 0:
             print('copy musicup to bin failed: {}'.format(res))
             exit(1)
+    print('musicup copied to bin')
 
 if __name__ == '__main__':
     build_musicup()

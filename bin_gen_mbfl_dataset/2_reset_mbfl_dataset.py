@@ -3,6 +3,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_path = Path(os.path.realpath(__file__))
 bin_gen_mbfl_dir = script_path.parent
@@ -16,7 +17,7 @@ def get_available_machines():
     machine_fp.close()
     return machines
 
-def reset_mfbl(bash_name):
+def reset_mfbl(bash_name, experiment_name):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -25,7 +26,7 @@ def reset_mfbl(bash_name):
 
     cnt = 0
     for machine in machines:
-        bash_file.write('ssh {} "rm -rf mbfl_dataset/" &\n'.format(machine))
+        bash_file.write('ssh {} "rm -rf {}/" &\n'.format(machine, experiment_name))
         cnt += 1
         if cnt%5 == 0:
             bash_file.write("sleep 1s\n")
@@ -41,4 +42,5 @@ def reset_mfbl(bash_name):
             
 
 if __name__ == '__main__':
-    reset_mfbl('2_reset_mbfl_dataset.sh')
+    experiment_name = sys.argv[1]
+    reset_mfbl('2_reset_mbfl_dataset.sh', experiment_name)

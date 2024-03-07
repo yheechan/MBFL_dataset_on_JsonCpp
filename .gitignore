@@ -1,11 +1,14 @@
 original_jsoncpp/
-past_data/
 bin_run_on_machine/
 test*/
 extractor/extractor
 bin_on_machine/extractor
 bin_on_machine_mbfl_dataset/musicup
 *.zip
-data_per_bug/
-prerequisite_data_per_bug/
+
+# IMPORTANT NOT TO DELETE (THINK BEFORE RM -RF COMMAND)
 _*
+past_data/
+data_per_bug/
+prerequisite_data_per_bug*/
+mbfl_dataset_per_bug*/

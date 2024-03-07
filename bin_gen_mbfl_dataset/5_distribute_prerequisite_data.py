@@ -3,6 +3,7 @@
 import subprocess as sp
 from pathlib import Path
 import os
+import sys
 
 script_path = Path(os.path.realpath(__file__))
 bin_gen_mbfl_dir = script_path.parent
@@ -34,7 +35,7 @@ def get_assigned_machines(machine_list):
     
     return assigned_machines
 
-def send_prerequisite_data(bash_name):
+def send_prerequisite_data(bash_name, experiment_name):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -78,36 +79,36 @@ def send_prerequisite_data(bash_name):
                 file = bug_dir / 'coverage_data' / tc_line_cov
                 assert file.exists()
                 file_name = file.name
-                bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/{}/prerequisite_data/coverage_data/{} & \n'.format(
-                    file, machine, core_id, file_name
+                bash_file.write('scp -r {} {}:/home/yangheechan/{}/{}/prerequisite_data/coverage_data/{} & \n'.format(
+                    file, machine, experiment_name, core_id, file_name
                 ))
             
             # send post processed coverage data
             pp_dir = bug_dir / 'postprocessed_coverage_data'
             assert pp_dir.exists()
-            bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/{}/prerequisite_data/ & \n'.format(
-                pp_dir, machine, core_id
+            bash_file.write('scp -r {} {}:/home/yangheechan/{}/{}/prerequisite_data/ & \n'.format(
+                pp_dir, machine, experiment_name, core_id
             ))
 
             # send testcase info
             tc_info_dir = bug_dir / 'testcase_info'
             assert tc_info_dir.exists()
-            bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/{}/prerequisite_data/ & \n'.format(
-                tc_info_dir, machine, core_id
+            bash_file.write('scp -r {} {}:/home/yangheechan/{}/{}/prerequisite_data/ & \n'.format(
+                tc_info_dir, machine, experiment_name, core_id
             ))
 
             # send version summary
             version_summary = bug_dir / 'version_summary.csv'
             assert version_summary.exists()
-            bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/{}/prerequisite_data/ & \n'.format(
-                version_summary, machine, core_id
+            bash_file.write('scp -r {} {}:/home/yangheechan/{}/{}/prerequisite_data/ & \n'.format(
+                version_summary, machine, experiment_name, core_id
             ))
 
             # send bug version txt
             bug_version_txt = bug_dir / 'bug_version.txt'
             assert bug_version_txt.exists()
-            bash_file.write('scp -r {} {}:/home/yangheechan/mbfl_dataset/{}/prerequisite_data/ & \n'.format(
-                bug_version_txt, machine, core_id
+            bash_file.write('scp -r {} {}:/home/yangheechan/{}/{}/prerequisite_data/ & \n'.format(
+                bug_version_txt, machine, experiment_name, core_id
             ))
 
             cnt += 1
@@ -125,4 +126,5 @@ def send_prerequisite_data(bash_name):
             
 
 if __name__ == '__main__':
-    send_prerequisite_data('5_distribute_prerequisite_data.sh')
+    experiment_name = sys.argv[1]
+    send_prerequisite_data('5_distribute_prerequisite_data.sh', experiment_name)
