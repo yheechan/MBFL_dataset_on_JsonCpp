@@ -35,9 +35,9 @@ def get_mutant_dict(core_dir):
             line_number = int(row[1])
             mutant_id = row[2]
             mutant_name = row[3]
-            mutation_operator = row[4]
-            before_mutation = row[5]
-            after_mutation = row[6]
+            # mutation_operator = row[4]
+            # before_mutation = row[5]
+            # after_mutation = row[6]
 
             if target_file not in mutant_dict:
                 mutant_dict[target_file] = {}
@@ -176,8 +176,8 @@ def measure_mbfl_features(core_dir, lines_list, mutant_dict):
             met_4 = max(line2met_4)
 
             muse_1 = 1 / (line2mutant_cnt + 1)
-            muse_4 = (1 / ((line2mutant_cnt + 1) + (total_f2p + 1))) * muse_2
-            muse_5 = (1 / ((line2mutant_cnt + 1) + (total_p2f + 1))) * muse_3
+            muse_4 = (1 / ((line2mutant_cnt + 1) * (total_f2p + 1))) * muse_2
+            muse_5 = (1 / ((line2mutant_cnt + 1) * (total_p2f + 1))) * muse_3
             muse_6 = muse_4 - muse_5
 
             if line_key not in line_features[target_file]:
