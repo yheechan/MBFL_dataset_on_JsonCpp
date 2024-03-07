@@ -30,9 +30,9 @@ def initial_build_exec(core_id):
     curr_time = time.time()
     print('[{} {:.2f} secs] - Success initial build: {}'.format(core_id, curr_time - begin_time, res))
 
-def gen_mutations_exec(core_id):
+def gen_mutations_exec(core_id, l_cnt):
     # 2. generate mutations
-    cmd = [gen_mutations, core_id]
+    cmd = [gen_mutations, core_id, l_cnt]
     begin_time = time.time()
     print('1. start generate mutations')
     res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
@@ -94,11 +94,12 @@ def measure_mbfl_features_exec(core_id):
 if __name__ == "__main__":
     core_id = sys.argv[1]
     mutation_size = sys.argv[2]
+    l_cnt = sys.argv[3]
 
     start_time = time.time()
 
     initial_build_exec(core_id)
-    gen_mutations_exec(core_id)
+    gen_mutations_exec(core_id, l_cnt)
     select_mutants_exec(core_id, mutation_size)
     run_mutants_exec(core_id)
     measure_mbfl_features_exec(core_id)

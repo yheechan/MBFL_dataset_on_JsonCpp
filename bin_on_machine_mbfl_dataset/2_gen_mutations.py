@@ -35,9 +35,10 @@ def initiate_directory(core_dir):
 # -l 1 -p /home/yangheechan/mbfl-dataset-gen/structure-project/MUSICUP/jsoncpp_template/build/compile_commands.json
 # > /home/yangheechan/mbfl-dataset-gen/structure-project/MUSICUP/outputs.0/mutations-json_reader.cpp/output.0 2>&1
 
-def gen_mutations(jsoncpp_dir, mutations_dir, output_dirs):
+def gen_mutations(jsoncpp_dir, mutations_dir, output_dirs, l_cnt):
     # musicup
     musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/musicup'
+    # musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/music'
     assert musicup_exe.exists()
 
     # build command file path
@@ -57,7 +58,7 @@ def gen_mutations(jsoncpp_dir, mutations_dir, output_dirs):
             # '-re', str(target_file)+':74',
             '-o', str(output_dir),
             # '-o', str(real_output_dir),
-            '-l', '5',
+            '-l', l_cnt,
             '-p', str(compile_commands),
             '>' , str(output_dir / 'output.0'), '2>&1'
         ]
@@ -69,9 +70,10 @@ def gen_mutations(jsoncpp_dir, mutations_dir, output_dirs):
 
 if __name__ == "__main__":
     core_id = sys.argv[1]
+    l_cnt = sys.argv[2]
     core_dir = main_dir / core_id
     jsoncpp_dir = core_dir / 'jsoncpp_template'
 
     mutations_dir, outputs_dirs = initiate_directory(core_dir)
-    gen_mutations(jsoncpp_dir, mutations_dir, outputs_dirs)
+    gen_mutations(jsoncpp_dir, mutations_dir, outputs_dirs, l_cnt)
 
