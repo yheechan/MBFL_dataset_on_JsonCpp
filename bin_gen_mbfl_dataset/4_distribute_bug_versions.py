@@ -67,7 +67,7 @@ def get_assigned_machines(machine_list):
     
     return assigned_machines
 
-def send_bug_version(bash_name, experiment_name):
+def send_bug_version(bash_name, experiment_name, target_machines):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -76,8 +76,17 @@ def send_bug_version(bash_name, experiment_name):
 
     assigned_machines = get_assigned_machines(machines)
 
+    designated_machines = []
+    if target_machines[0] == '' and len(target_machines) == 1:
+        designated_machines = machines
+    else:
+        designated_machines = target_machines
+
     cnt = 0
     for machine in assigned_machines:
+        if machine not in designated_machines:
+            continue
+        
         print('machine {}'.format(machine))
 
         for core_num in assigned_machines[machine]:
@@ -120,4 +129,5 @@ def send_bug_version(bash_name, experiment_name):
 
 if __name__ == '__main__':
     experiment_name = sys.argv[1]
-    send_bug_version('4_distribute_bug_versions.sh', experiment_name)
+    target_machines = sys.argv[2].split(' ')
+    send_bug_version('4_distribute_bug_versions.sh', experiment_name, target_machines)

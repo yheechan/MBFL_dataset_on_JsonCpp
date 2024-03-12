@@ -35,7 +35,7 @@ def get_assigned_machines(machine_list):
     
     return assigned_machines
 
-def send_prerequisite_data(bash_name, experiment_name):
+def send_prerequisite_data(bash_name, experiment_name, target_machines):
     machines = get_available_machines()
     print("Resetting MBFL on {} machines".format(len(machines)))
 
@@ -43,13 +43,19 @@ def send_prerequisite_data(bash_name, experiment_name):
     assigned_machines = get_assigned_machines(machines)
 
     cnt = 0
-    for machines in assigned_machines:
-        print('machine {}'.format(machines))
-        for core in assigned_machines[machines]:
+    for machine in assigned_machines:
+        print('machine {}'.format(machine))
+        for core in assigned_machines[machine]:
             print('\t{}: '.format(core))
-            print('\t\t{}'.format(assigned_machines[machines][core]))
+            print('\t\t{}'.format(assigned_machines[machine][core]))
             cnt += 1
     print('total: ', cnt)
+
+    designated_machines = []
+    if target_machines[0] == '' and len(target_machines) == 1:
+        designated_machines = machines
+    else:
+        designated_machines = target_machines
     
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
@@ -64,6 +70,9 @@ def send_prerequisite_data(bash_name, experiment_name):
     ]
 
     for machine in assigned_machines:
+        if machine not in designated_machines:
+            continue
+        
         print('machine {}'.format(machine))
 
         for core_id in assigned_machines[machine]:
@@ -123,8 +132,8 @@ def send_prerequisite_data(bash_name, experiment_name):
 
     cmd = ['chmod', '+x', bash_name]
     res = sp.run(cmd)
-            
 
 if __name__ == '__main__':
     experiment_name = sys.argv[1]
-    send_prerequisite_data('5_distribute_prerequisite_data.sh', experiment_name)
+    target_machines = sys.argv[2].split(' ')
+    send_prerequisite_data('5_distribute_prerequisite_data.sh', experiment_name, target_machines)

@@ -37,8 +37,8 @@ def initiate_directory(core_dir):
 
 def gen_mutations(jsoncpp_dir, mutations_dir, output_dirs, l_cnt):
     # musicup
-    musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/musicup'
-    # musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/music'
+    # musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/musicup'
+    musicup_exe = main_dir / 'bin_on_machine_mbfl_dataset/music'
     assert musicup_exe.exists()
 
     # build command file path

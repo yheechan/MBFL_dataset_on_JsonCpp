@@ -17,8 +17,12 @@ def get_available_machines():
     machine_fp.close()
     return machines
 
-def reset_mfbl(bash_name, experiment_name):
-    machines = get_available_machines()
+def reset_mfbl(bash_name, experiment_name, target_machines):
+    machines = []
+    if target_machines[0] == '' and len(target_machines) == 1:
+        machines = get_available_machines()
+    else:
+        machines = target_machines
     print("Resetting MBFL on {} machines".format(len(machines)))
 
     bash_file = open(bash_name, 'w')
@@ -43,4 +47,5 @@ def reset_mfbl(bash_name, experiment_name):
 
 if __name__ == '__main__':
     experiment_name = sys.argv[1]
-    reset_mfbl('2_reset_mbfl_dataset.sh', experiment_name)
+    target_machines = sys.argv[2].split(' ')
+    reset_mfbl('2_reset_mbfl_dataset.sh', experiment_name, target_machines)

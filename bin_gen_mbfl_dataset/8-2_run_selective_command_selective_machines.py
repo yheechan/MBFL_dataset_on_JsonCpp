@@ -25,28 +25,19 @@ def get_machinecore2bug():
         machinecore2bug[machine][core] = bug_version
     return machinecore2bug
 
-def run_command(bash_name, machinecore2bug, experiment_name, mutation_size, l_cnt, target_machines):
-    designated_machines = []
-    if target_machines[0] == '' and len(target_machines) == 1:
-        designated_machines = machinecore2bug.keys()
-    else:
-        designated_machines = target_machines
-
+def run_command(bash_name, experiment_name, command_name, target_machines):
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
     
     cnt = 0
-    for machine in machinecore2bug:
-        if machine not in designated_machines:
-            continue
-        
-        for core in machinecore2bug[machine]:
-            bug_version = machinecore2bug[machine][core]
-            command = 'ssh {} \"cd {}/bin_on_machine_mbfl_dataset && ./command.py {} {} {} > output.{} 2>&1\" & \n'.format(
-                machine, experiment_name, core, mutation_size, l_cnt, core
+    for machine in target_machines:
+        for core_i in range(8):
+            core = 'core{}'.format(core_i)
+            command = 'ssh {} \"cd {}/bin_on_machine_mbfl_dataset && ./{} {} > {}.output.{} 2>&1\" & \n'.format(
+                machine, experiment_name, command_name, core, command_name, core
             )
             bash_file.write(command)
-            
+
             if cnt % 5 == 0:
                 bash_file.write("sleep 1s\n")
                 # bash_file.write("wait\n")
@@ -62,9 +53,8 @@ def run_command(bash_name, machinecore2bug, experiment_name, mutation_size, l_cn
 
 if __name__ == "__main__":
     experiment_name = sys.argv[1]
-    mutation_size = int(sys.argv[2])
-    l_cnt = sys.argv[3]
-    target_machines = sys.argv[4].split(' ')
+    command_name = sys.argv[2]
+    target_machines = sys.argv[3].split(' ')
     
-    machinecore2bug = get_machinecore2bug()
-    run_command('8_run_command.sh', machinecore2bug, experiment_name, mutation_size, l_cnt, target_machines)
+    # machinecore2bug = get_machinecore2bug()
+    run_command('8-2_run_selective_command_selective_machines.sh', experiment_name, command_name, target_machines)

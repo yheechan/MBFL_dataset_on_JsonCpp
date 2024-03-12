@@ -17,9 +17,13 @@ def get_available_machines():
     machine_fp.close()
     return machines
 
-def send_bin(bash_name, bin_name, experiment_name):
-    machines = get_available_machines()
-    print("Resetting MBFL on {} machines".format(len(machines)))
+def send_bin(bash_name, bin_name, experiment_name, target_machines):
+    machines = []
+    if target_machines[0] == '' and len(target_machines) == 1:
+        machines = get_available_machines()
+    else:
+        machines = target_machines
+    print("Sending bin on {} machines".format(len(machines)))
 
     bash_file = open(bash_name, 'w')
     bash_file.write('date\n')
@@ -53,4 +57,5 @@ def send_bin(bash_name, bin_name, experiment_name):
 
 if __name__ == '__main__':
     experiment_name = sys.argv[1]
-    send_bin('7_send_bin.sh', 'bin_on_machine_mbfl_dataset', experiment_name)
+    target_machines = sys.argv[2].split(' ')
+    send_bin('7_send_bin.sh', 'bin_on_machine_mbfl_dataset', experiment_name, target_machines)
